@@ -1,0 +1,226 @@
+var hotspotVideoPlayer = hotspotVideoPlayer || {};
+
+(function ($) {
+
+  $.extend( hotspotVideoPlayer, {
+  currvidId: null,
+  currPoster: "",
+  winWidth: $(window).width(),
+  playerHTML: "",
+  playerData: {'accountId': '336103926','playerId': 'default'},
+  xSml: 430,
+  $modalWrapper: $(".hvp-wrap"),
+  $modalInner: $(".modal_hvp .modal-inner"),
+  $posterOverlay: $(".poster_overlay"),
+  $posterImg: $(".poster_overlay img"),
+  $hsVidPlayer: null,
+  userAgent: navigator.userAgent || navigator.vendor || window.opera,
+  init:function(mod) {
+      var $mod = $(mod),
+          self = this;
+
+      self.breakpointChanges($mod);
+      self.setBindings($mod);
+  },
+  playVideo: function() {
+    var self = this,
+        deviceType = "",
+        muteVal = "";
+
+    //windows phone must come first because its UA also contains "Android"
+    if(/windows phone/i.test(self.userAgent)) deviceType = "Windows Phone";
+    if(/android/i.test(self.userAgent)) deviceType = "Android";
+    if(/iPad|iPhone|iPod/.test(self.userAgent) && !window.MSStream) deviceType = "iOS";
+
+    //touch devices must have video muted to autoplay
+    if(deviceType === "Android" || deviceType === "iOS" || deviceType === "Windows Phone") {
+      muteVal = "muted";
+    }
+
+    //build the player video element
+    self.playerHTML = '<video id="hotspotVid" class="video-js vjs-tech" data-video-id="' + self.currvidId + '" data-account="' + self.playerData.accountId + '" data-player="' + self.playerData.playerId + '" data-embed="default" preload="metadata" controls autoplay ' + muteVal + ' playsinline="" tabindex="-1"></video>';
+    self.$modalInner.append(self.playerHTML);
+    
+    //instantiate player
+    // var hsVidPlayerOptions = {
+    //   controlBar: {
+    //       volumePanel: {inline: false}
+    //   }
+    // };
+
+    bc(document.getElementById("hotspotVid"));
+
+    //self.$hsVidPlayer = videojs("hotspotVid", hsVidPlayerOptions);
+    self.$hsVidPlayer = videojs("hotspotVid");
+
+    self.$hsVidPlayer.ready(function() {
+      var hsVidCheck = setInterval(function() {
+        if(self.$hsVidPlayer.readyState() === 4) { //video is ready to begin playback
+          self.$posterImg.fadeOut("slow");
+
+          //player interface updates
+          var controlBar = self.$hsVidPlayer.controlBar;
+          var volumeControl = controlBar.addChild('VolumeControl');
+          volumeControl.volumeBar.vertical_ = true;
+          // console.log(controlBar.volumePanel.options_.volumeControl.vertical);
+
+          $(".vjs-volume-horizontal").removeClass("vjs-volume-horizontal").addClass("vjs-volume-vertical");
+          $(".vjs-slider-horizontal").removeClass("vjs-slider-horizontal").addClass("vjs-slider-vertical");
+
+          controlBar.addChild('MuteToggle');
+
+          // $(".bc-player-default_default .vjs-play-progress").on({ //fix progress bar positioning issue on hover
+          $(".vjs-progress-control").on({ //fix progress bar positioning issue on hover
+            mouseenter: function() {
+              $(this).find(".vjs-play-progress").addClass("reposProgressBar");
+            }
+          });
+
+          //hide/show volume slider bar
+          $(".vjs-mute-control, .vjs-volume-control").on({
+            mouseenter: function() {
+              $(".vjs-volume-control").show();
+            },
+            mouseleave: function() {
+              $(".vjs-volume-control").hide();
+            }
+          });
+
+          clearInterval(hsVidCheck);
+        }
+      }, 100);
+
+      setTimeout(function() {
+        self.$posterImg.fadeOut("slow");
+      }, 7000);
+
+      this.on("ended", function() {
+        self.animateModal("rtl");
+      });
+    });
+  },
+  animateModal: function(direction) {
+    var self = this,
+        leftVal = (direction === "ltr") ? "0":"-100vw";
+
+    //show modal
+    $(".hvp-wrap").show();
+
+    $(".mfp-inline-holder .mfp-content").animate({
+      left: leftVal,
+    }, 800, "swing", function() {
+      //animation complete
+      if(direction === "rtl") {
+        //hide/delete video
+        self.$hsVidPlayer.dispose();
+        self.$posterImg.hide();
+        $(".hvp-wrap").fadeOut("fast");
+      } 
+    });
+    
+  },
+  breakpointChanges: function($mod) {
+    var self = this,
+        imgSrc;
+
+    self.winWidth = $(window).width();
+
+    $mod.find("img.swap").each(function() {
+      if(self.winWidth <= self.xSml) { //x-small
+        imgSrc = $(this).data("mobile");
+      } else { 
+        imgSrc = $(this).data("desktop");
+      }
+      $(this).attr("src",imgSrc);
+    });
+  },
+  setBindings: function($mod) {
+    var self = this;
+
+    //modal windows
+    $mod.find(".hotspot").magnificPopup({
+        items: [{
+          src: '.modal_hvp'
+        }],
+        mainClass: 'hvp-wrap',
+        closeOnContentClick: false,
+        closeMarkup: '<button type="button" class="hvp-modal-close" title="Close (Esc)">×</button>'
+    });
+
+    //'plus sign' hover pulse animation
+    $mod.find(".hotspot").on({
+      mouseenter: function() {
+        $(this).find(".hs-icon").addClass("hs_pulse");
+      },
+      mouseleave: function() {
+        $mod.find(".hs-icon").removeClass("hs_pulse");
+      }
+    });
+
+    //'plus sign' click to launch modals
+    $mod.find(".hotspot").on("click", function(e) {
+      //bug fix for Chrome browser on Mac
+      var OSName = "",
+          isChrome = !!window.chrome;
+      
+      // if(navigator.appVersion.indexOf("Mac") != -1) OSName="MacOS";    
+      // if(OSName === "MacOS" && isChrome === true) {
+      //   $mod.find(".hsMain").css({'width' : '101.2%','max-width' : '101.2%'});
+      // }
+
+      //find current video id
+      self.currvidId = $(this).children("a").data("vid-id");
+
+      //make appropriate changes between x-small/higher
+      self.breakpointChanges($mod);
+
+      //set poster image and play video
+      var posterDataAttr = $(this).data("poster");
+      self.currPoster = "."+posterDataAttr;
+      self.$posterImg.hide();
+      self.$posterOverlay.children(self.currPoster).show();
+      self.playVideo();
+
+      //animate modal left to right
+      self.animateModal("ltr");
+    });
+
+    //video fullscreen fix for IE10 and below
+    document.addEventListener('DOMContentLoaded', function() {
+      window.setTimeout(function() {
+        if(window.name === 'videojs-fullscreen-window') {
+          addPlayer();
+        }
+      }, 10);
+    }, false);
+
+    //modal close button click
+    $(document).on("click", ".hvp-modal-close", function(e) {
+      //animate modal off of screen
+      self.animateModal("rtl");
+    });
+
+    //switch between x-small or larger on resize
+    $(window).resize( function() {
+      //self.winWidth = $(window).width();
+      self.breakpointChanges($mod);
+
+      //if($(".hvp-wrap").is(":visible")) { //modal is open
+        //show poster and play video
+        // if(!self.$modalInner.find("#hotspotVid").length) {
+        //   self.$posterImg.hide();
+        //   self.$posterOverlay.children(self.currPoster).show().fadeOut("slow");
+        //   self.playVideo();
+        // }
+      //}
+    });
+  }
+
+});
+  
+//init component
+$(document).ready(function() {
+  hotspotVideoPlayer.init(".hotspot_video_player");
+});
+        
+})(jQuery);

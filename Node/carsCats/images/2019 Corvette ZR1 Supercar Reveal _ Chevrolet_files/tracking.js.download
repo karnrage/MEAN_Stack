@@ -1,0 +1,118 @@
+var digitalData = window.digitalData || {
+	pageInfo: {},
+	internalCampaignInfo: {},
+	articleInfo: {},
+	visitorProfile: {},
+	vehicleInfo: {},
+	toolsInfo:{}
+};
+/* Dealer Locator Info */
+digitalData.toolsInfo.formSteps = '';
+digitalData.toolsInfo.dealerName = '';
+digitalData.toolsInfo.dealerId = '';
+digitalData.toolsInfo.dealerZipCode = '';
+digitalData.toolsInfo.formErrors = '';
+
+/* site content */
+digitalData.pageInfo.siteSectionsLevel1 = "vehicles";
+digitalData.pageInfo.siteSectionsLevel2 = String(modelYear);
+digitalData.pageInfo.siteSectionsLevel3 = String(vehicleType);
+digitalData.pageInfo.siteSectionsLevel4 = String(modelName);
+var additionalSections = "overview";
+
+var siteSections = [
+	digitalData.pageInfo.siteSectionsLevel1,
+	digitalData.pageInfo.siteSectionsLevel2,
+	digitalData.pageInfo.siteSectionsLevel3,
+	digitalData.pageInfo.siteSectionsLevel4,
+	additionalSections
+].filter(function(string) {return string != 'undefined';});
+
+digitalData.pageInfo.siteSectionsLevel5 = siteSections.join(':');
+
+digitalData.pageInfo.pageName = "chevrolet:NA:US:en:t1:" + digitalData.pageInfo.siteSectionsLevel5;
+
+digitalData.pageInfo.url = window.location.href;
+digitalData.pageInfo.seoStrategyPageName = "";
+digitalData.pageInfo.pageType = String(modelName);
+digitalData.pageInfo.pageSubType = "";
+digitalData.pageInfo.pageMarketing = "";
+digitalData.pageInfo.pageMarketingSubType = "";
+
+/* website indentification */
+// digitalData.pageInfo.languageSelected = "english";
+digitalData.pageInfo.brand = "chevrolet";
+digitalData.pageInfo.country = "United States";
+digitalData.pageInfo.siteName = "quantum_" + "United States";
+digitalData.pageInfo.region = "North America";
+
+/* responsive design */
+var trackRenderedExperience = function() {
+	if (window.matchMedia(Foundation.media_queries.large).matches) {
+		digitalData.pageInfo.renderedExperience = 'large';
+	}
+	else if (window.matchMedia(Foundation.media_queries.medium).matches) {
+		digitalData.pageInfo.renderedExperience = 'medium';
+	}
+	else if (window.matchMedia(Foundation.media_queries.small).matches) {
+		digitalData.pageInfo.renderedExperience = 'small';
+	}
+}
+
+var trackViewportSize = function() {
+	digitalData.pageInfo.viewport = window.innerWidth + 'x' + window.innerHeight;
+}
+
+var trackOrientation = function() {
+	if(window.innerWidth > window.innerHeight) {
+		digitalData.pageInfo.orientation='landscape';
+	}
+	else {
+		digitalData.pageInfo.orientation='portrait';
+	}
+}
+
+trackViewportSize();
+trackOrientation();
+
+/* internal search */
+var trackInternalSearchNoOfResults = function(internalSearchNoOfResults) {
+	digitalData.internalCampaignInfo.internalSearchNoOfResults = internalSearchNoOfResults; /* GSA implementation */
+}
+
+/* vehicle identification */
+digitalData.vehicleInfo.familyOfVehicles = "";
+digitalData.vehicleInfo.vehicleType = String(vehicleType);
+digitalData.vehicleInfo.modelName = String(modelName);
+digitalData.vehicleInfo.modelYear = String(modelYear);
+digitalData.vehicleInfo.bodyStyle = String(bodyStyle);
+digitalData.vehicleInfo.trimLevel = String(trimLevel);
+digitalData.vehicleInfo.vin = "";
+
+/*component name*/
+digitalData.pageInfo.dataDtm = String(componentName); 
+
+/* user authentication/visitor profile */
+var trackZipCode = function(zipCode) {
+	digitalData.visitorProfile.zipCode = zipCode;
+}
+
+/* article */
+var trackArticleName = function(name) {
+	digitalData.articleInfo.articleName = name;
+}
+
+//console.log('hello = ' + $('window.parent.digitalData.pageInfo.siteSectionsLevel1').text);
+
+// if (window.location.href.indexOf("gmccontenthub.com") > 0) {
+//     //Production
+// 	$('<script src="//assets.adobedtm.com/81e75e0d225e65a4860f48466627a6b696b9fc66/satelliteLib-909d88aab23eae22ed5d3066d9fa574a70736dfe.js"></script>').appendTo(document.head);
+// }else{
+// 	//Staging (Dev and PreProd)
+// 	$('<script src="//assets.adobedtm.com/81e75e0d225e65a4860f48466627a6b696b9fc66/satelliteLib-909d88aab23eae22ed5d3066d9fa574a70736dfe-staging.js"></script>').appendTo(document.head);
+// }
+
+//Production
+$('<script src="//assets.adobedtm.com/81e75e0d225e65a4860f48466627a6b696b9fc66/satelliteLib-f4f8b9464cd254fe1425676d92f23ffc642c6250.js"></script>').appendTo(document.head);
+
+$('<script type="text/javascript">_satellite.pageBottom();</script>').appendTo(document.body);

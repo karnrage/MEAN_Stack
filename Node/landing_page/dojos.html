@@ -1,0 +1,21 @@
+<link href="https://fonts.googleapis.com/css?family=Oswald:700|Patua+One|Roboto+Condensed:700" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<!-- need aCTON AND METHOD STILL -->
+<section id="contact" class="content-section text-center">
+        <div class="contact-section">
+            <div class="container">
+              <h2>Write a new review</h2>
+              <p>Feel free to shout us by feeling the contact form or visiting our social network sites like Fackebook,Whatsapp,Twitter.</p>
+              <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                  <form action="/Process" method="post" class="form-horizontal">
+                    <div class="form-group">
+                      <label for="exampleInputName2">Reviewer Name</label>
+                      <input asp-for="reviewer_name" name="reviewer_Name" type="text" class="form-control" id="exampleInputName2" placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail2">Dojo Name</label>
+                      <input asp-for="restaurant_name" name="restaurant_Name" type="text" class="form-control" id="exampleInputEmail2" placeholder="Restaurant">
+                    </div>
+     

@@ -1,0 +1,52 @@
+Math 1
+function zero_negativity(arr){
+    var x = false;
+    for(let i = 0; i < arr.length - 1; i++){
+        if(arr[i] > 0){
+            x = true;
+            continue;
+        }
+        else{
+            return x = false;            
+        }
+    }
+}
+
+Math 2
+function is_even(num){
+    if(num % 2 == 0){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+Math 3
+how_many_even(arr){
+    var count = 0;
+    for(let i = 0; i < arr.length - 1; i++){
+        if(is_even(arr[i])==true){
+            count +=1;
+        }
+        else{
+            continue;
+        }       
+    }
+}
+
+Math 4
+function create_dummy_array(num){
+    var arr = [];
+    for(let i = 0; i = num; i++){
+        let x = Math.floor(Math.random()*10);
+        arr.push(x);
+    }
+}
+
+Math 5
+function random_choice(arr){
+    x = arr.length + 1;
+    let y = Math.floor(Math.random()*x);
+    return arr[y];
+}
