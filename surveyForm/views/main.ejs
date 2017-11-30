@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Survey Form</title>
+</head>
+<body>
+
+    <h1>Survey Form</h1>
+    <h3><strong>Contact Us Here</strong></h3>
+    <h3><strong>Overseas Locations</strong></h3>
+    <div class="container">
+            <div class="well well-sm">
+            
+            </div>
+            
+            <div class="row">
+            <div class="col-md-7">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d3736489.7218514383!2d90.21589792292741!3d23.857125486636733!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1506502314230" width="100%" height="315" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>   
+        </div>
+    <form action="/survey" method="POST" name="kk">
+        <h4><strong>Get in Touch</strong></h4>
+        <label for="team_name">Enter name: </label>
+        <input type="text" name="nameField" value="Whats your name?">
+        
+    
+
+    <section id="contact">
+ 
+
+            <div class="form-group">
+                <label for="select" class="col-md-2 control-label">Dojo Location: </label>
+                <div class="col-md-10">
+                    <select class="form-control" name="dojoLocation" id="location">
+                        <option selected>Silicon Valley</option>
+                        <option>Seattle</option>
+                        <option>Los Angeles</option>
+                        <option>Dallas</option>
+                        <option>Washington DC</option>
+                        <option>Chicago</option>
+                        <option>Berkeley</option>
+                        <option>Orange County</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                    <label for="select" class="col-md-2 control-label">Favorite Language:</label>
+                    <div class="col-md-10">
+                        <select class="form-control" name="favLanguage" id="language">
+                            <option>HTML</option>
+                            <option>CSS</option>
+                            <option>JavaScript</option>
+                            <option selected>Python</option>
+                            <option>MYSQL</option>
+                            <option >C#</option>
+                            <option>Ruby</option>
+                            <option>Swift</option>
+                            <option>PHP</option>
+                        </select>
+                    </div>
+                </div>
+        
+            <div class="col-md-5">
+
+                <form>
+          
+                <div class="form-group">
+                    <input type="email" class="form-control" name="" value="" placeholder="E-mail">
+                </div>
+                <div class="form-group">
+                    <input type="tel" class="form-control" name="" value="" placeholder="Phone">
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" name="comment" rows="3" placeholder="Message"></textarea>
+                </div>
+                <button class="btn btn-default" type="submit" name="button">
+                    <i class="fa fa-paper-plane-o" aria-hidden="true"></i> Submit
+                </button>
+                </form>
+            </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+
