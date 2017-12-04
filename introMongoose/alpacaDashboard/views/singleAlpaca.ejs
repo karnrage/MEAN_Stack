@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Particular Alpaca</title>
+</head>
+<body>
+
+    <h1>This Alpaca</h1>
+    
+    <p> Name: <%= alpaca.name %> </p>
+    <p> Weight: <%= alpaca.weight %></p>
+    <p> Color: <%= alpaca.color %></p>
+    <p> Age: <%= alpaca.age %></p>  
+
+    <a href="/alpaca/edit/<%=alpaca.id%>">Edit values</a>
+    <a href="/alpaca/destroy/<%=alpaca.id%>">Delete this mongrel</a>
+    
+</body>
+</html> 

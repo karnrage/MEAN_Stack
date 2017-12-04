@@ -37,6 +37,7 @@ app.get('/', function (req, res){
         res.render('main');
     });
 
+    
 
 app.post('/quotes', function (req, res){
     // console.log("POST DATA",req.body)

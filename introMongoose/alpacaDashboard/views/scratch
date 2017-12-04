@@ -1,0 +1,5 @@
+    % if (alpacas) { %
+    <% for(var i = 0; i < alpacas.length; i++) { %>
+    <p> Name: <%= alpaca[i].name %> Weight: <%= alpaca[i].weight %></p>
+    <% } %>
+    % } %
