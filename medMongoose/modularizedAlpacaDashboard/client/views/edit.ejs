@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit the alpaca!</title>
+</head>
+<body>
+        <h1>Current info of this Alpaca</h1>
+        
+        <p> Name: <%= alpaca.name %> </p>
+        <p> Weight: <%= alpaca.weight %></p>
+        <p> Color: <%= alpaca.color %></p>
+        <p> Age: <%= alpaca.age %></p>   
+        
+    
+        <form action='/alpaca/edit/<%=alpaca.id%>' method="POST" name="k2">
+            <label for="name">Alpaca's Name: </label>
+            <br>
+            <input type="text" name="name" placeholder="Whats the name?">
+            <br>
+
+            <label for="weight">Alpaca's Weight: </label>
+            <br>
+            <input type="text"  name="weight" type="text" class="" >       
+            <br>
+
+            <label for="color">Alpaca's Color: </label>
+            <br>
+            <input type="text"  name="color" type="text" class="" >       
+            <br>
+
+            <label for="age">Alpaca's age: </label>
+            <br>
+            <input type="text"  name="age" type="number" class="" >       
+            <br>
+            <!-- should input be number? -->
+
+        <button type="submit" class=" ">Edit my al-PACK-a!! ;-)</button>
+    </form>
+    <br>
+    <a href="/alpaca/destroy/<%=alpaca.id%>">Delete this mongrel</a>
+    
+</body>
+</html>

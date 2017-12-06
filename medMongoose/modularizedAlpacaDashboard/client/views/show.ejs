@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <% for(var i = 0; i < Alpacas.length; i++) { %>
+    <p> <a href="/alpaca/<%= Alpacas[i]._id%>">Name: <%=Alpacas[i].name %></a>
+    <p>Weight: <%= Alpacas[i].weight %></p>
+    <p>Color: <%= Alpacas[i].color %></p>
+    <p>Age: <%= Alpacas[i].age %></p>
+
+    <!-- keep .weight/color/age in lower case!! to match parameters-->
+ 
+    <% } %>
+</body>
+</html>
