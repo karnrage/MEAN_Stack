@@ -67,6 +67,7 @@ module.exports =  {
 
     showAll: function(req, res) {
         logReg.find({}, function(err, result) {
+            //find tosses "err" and "result" into the function callback
             
             if(err){
                 res.render('main');
