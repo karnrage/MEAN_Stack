@@ -1,0 +1,29 @@
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}! 
+  </h1>
+</div>
+
+<div style="text-align:center">
+  <button *ngIf="clicked!=='PST'" class="btn btn-primary"(click)="PST()">Pacific Standart Time</button>
+  <button *ngIf="clicked==='PST'" class="btn btn-info" (click)='PST()'>PST</button>
+  <!-- <button (click)="mstButtonClick($event)">Mountain Standart Time</button> -->
+  <button *ngIf="clicked!=='mst'" class="btn btn-primary" (click)='MST()'>Mountain Standart Time</button>
+  <button *ngIf="clicked==='mst'" class="btn btn-info" (click)='MST()'>MST</button>
+
+  <button *ngIf="clicked!=='cst'" class="btn btn-primary" (click)='CST()'>Central Standart Time</button>
+  <button *ngIf="clicked==='cst'" class="btn btn-info" (click)='CST()'>CST</button>
+
+  <button *ngIf="clicked!=='est'" class="btn btn-primary" (click)='EST()'>Eastern Sstandart Time</button>
+  <button *ngIf="clicked==='est'" class="btn btn-info" (click)='EST()'>EST</button>
+
+  <button *ngIf="clicked!=='clear'" class="btn btn-primary" (click)='clear()'>Clear</button>
+  <button *ngIf="clicked==='clear'" class="btn btn-info" (click)='clear()'>Clear</button>
+</div>
+
+ <div style="text-align:center">
+  <h1>
+    {{ time | date:'medium' }}
+  </h1>
+</div>
+ 
