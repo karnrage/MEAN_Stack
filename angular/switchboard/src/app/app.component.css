@@ -1,0 +1,16 @@
+.on {
+    width: 100px;
+    height: 100px;
+    background-color: green;    
+    border: 20px solid brown;
+    padding: 25px;
+    margin: 25px;
+}
+.off{
+    width: 100px;
+    height: 100px;
+    background-color: red;    
+    border: 25px solid brown;
+    padding: 25px;
+    margin: 25px;
+}
