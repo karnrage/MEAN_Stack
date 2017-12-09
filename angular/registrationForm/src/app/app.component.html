@@ -1,0 +1,230 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    {{user | json }}
+    {{ title }}
+  </h1>
+</div>
+<h3 class="form" style="text-align:center">Account Information</h3>
+<!-- <ul>
+  <li>
+  </li>
+  <li>
+  </li>
+  <li>
+  </li>
+</ul> -->
+<div style="text-align:center">
+  <form (submit)="onSubmit()" class="ng-untouched ng-pristine ng-invalid" #myForm = 'ngForm'>
+<!-- ==============first name================== -->
+      <label for="first_name">first_name</label>
+      <!-- <span class="error" *ngIf="first_name.errors != null && !first_name.pristine"> Field is Required</span> -->
+      <!-- <span class="error" *ngIf="first_name.errors == null" style="color: green"></span> -->
+      <br>
+      <input
+        type="text" 
+        name="first_name" 
+        required 
+        minlength="4" 
+        maxlength="24"
+        pattern="^[a-zA-Z]+$" 
+        [ngClass]="{'focus': first_name.dirty && !first_name.valid, 'good': first_name.valid}"
+        [(ngModel)]="user.first_name"
+        #first_name='ngModel'
+      />
+      <p *ngIf="first_name.errors && first_name.invalid && first_name.dirty" class="error">First Name required with a minimum length of 4</p>
+      {{ first_name.errors | json}}
+      {{ first_name.valid | json }}
+      <div *ngIf='!first_name.valid'> Error in your first_name </div>
+      <br>
+<!-- ===========================last name===================== -->
+      <label for="last_name">last_name</label>
+      <input 
+        type="text" 
+        name="last_name" 
+        required 
+        minlength="4" 
+        maxlength="24"
+        [ngClass]="{'focus': last_name.dirty && !last_name.valid, 'good': last_name.valid}"
+        [(ngModel)]="user.last_name"
+        #last_name='ngModel'
+      />
+      <p *ngIf="last_name.errors && last_name.invalid && last_name.dirty" class="error">Last Name required with a minimum length of 4</p>
+      
+      {{ last_name.errors | json}}
+      {{ last_name.valid | json }}
+      <div *ngIf='!last_name.valid'> Error in your last_name </div>
+      <br>
+<!-- ===============email================ -->
+      <label for="email">Email</label>
+      <input 
+        type="text" 
+        name="email" 
+        required 
+        minlength="4" 
+        maxlength="24"
+        pattern="([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+"
+        [ngClass]="{'focus': email.dirty && !email.valid, 'good': email.valid}"
+        [(ngModel)]="user.email"
+        #email='ngModel'
+      />
+      <p *ngIf="email.errors && email.invalid && email.dirty" class="error">A valid email address is required</p>
+      {{ email.errors | json}}
+      {{ email.valid | json }}
+      <div *ngIf='!email.valid'> Error in your email </div>
+      <br>
+<!-- ===========================password===================== -->
+      <label for="password">password</label>      
+      <input 
+        type="text" 
+        name="password" 
+        required 
+        minlength="4" 
+        maxlength="24"
+        pattern="(?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9])(?=\S*?[^\w\*])\S{8,25}"
+        [ngClass]="{'focus': password.dirty && !password.valid, 'good': password.valid}"
+        [(ngModel)]="user.password"
+        #password='ngModel'
+      />
+      <p *ngIf="password.errors && password.invalid && password.dirty" class="error">Password must be 8 characters long with 1 uppercase, 1 number, and one special character</p>
+      {{ password.errors | json}}
+      {{ password.valid | json }}
+      <div *ngIf='!password.valid'> Error in your password </div>
+      <br>
+<!-- ===========================confirm===================== -->
+<label for="confirm">Pass confirm</label>      
+<input 
+  type="text" 
+  name="confirm" 
+  required 
+  minlength="4" 
+  maxlength="24"
+  pattern="(?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9])(?=\S*?[^\w\*])\S{8,25}"
+  [ngClass]="{'focus': confirm.dirty && !confirm.valid, 'good': confirm.valid}"
+  [(ngModel)]="user.confirm"
+  #confirm='ngModel'
+/>
+<p *ngIf="confirm.errors && confirm.invalid && confirm.dirty" class="error">confirm must be 8 characters long with 1 uppercase, 1 number, and one special character</p>
+
+{{ confirm.errors | json}}
+{{ confirm.valid | json }}
+<div *ngIf='!confirm.valid'> Error in your password confirmation </div>
+<br> 
+<!-- ===========================address==================== -->
+<label for="address">address</label>
+<input 
+  type="text" 
+  name="address" 
+  required 
+  minlength="4" 
+  maxlength="24"
+  [ngClass]="{'focus': address.dirty && !address.valid, 'good': address.valid}"
+  [(ngModel)]="user.address"
+  #address='ngModel'
+/>
+<p *ngIf="address.errors && address.invalid && address.dirty" class="error">addy required with a minimum length of 4</p>
+
+{{ address.errors | json}}
+{{ address.valid | json }}
+<div *ngIf='!address.valid'> Error in your address </div>
+<br>
+<!-- ===========================unit or apt==================== -->
+<label for="unit">unit</label>
+<input 
+  type="text" 
+  name="unit" 
+  required 
+  minlength="4" 
+  maxlength="24"
+  [ngClass]="{'focus': unit.dirty && !unit.valid, 'good': unit.valid}"
+  [(ngModel)]="user.unit"
+  #unit='ngModel'
+/>
+<p *ngIf="unit.errors && unit.invalid && unit.dirty" class="error">unit required with a minimum length of 4</p>
+
+{{ unit.errors | json}}
+{{ unit.valid | json }}
+<div *ngIf='!unit.valid'> Error in your unit </div>
+<br>
+<!-- ===========================city==================== -->
+<label for="city">city</label>
+<input 
+  type="text" 
+  name="city" 
+  required 
+  minlength="4" 
+  maxlength="24"
+  [ngClass]="{'focus': city.dirty && !city.valid, 'good': city.valid}"
+  [(ngModel)]="user.city"
+  #city='ngModel'
+/>
+<p *ngIf="city.errors && city.invalid && city.dirty" class="error">Last Name required with a minimum length of 4</p>
+
+{{ city.errors | json}}
+{{ city.valid | json }}
+<div *ngIf='!city.valid'> Error in your city </div>
+<br>        
+      <!-- <select>
+          <option value="AL">Alabama</option>
+          <option value="AK">Alaska</option>
+          <option value="AZ">Arizona</option>
+          <option value="AR">Arkansas</option>
+          <option value="CA">California</option>
+          <option value="CO">Colorado</option>
+          <option value="CT">Connecticut</option>
+          <option value="DE">Delaware</option>
+          <option value="DC">District Of Columbia</option>
+          <option value="FL">Florida</option>
+          <option value="GA">Georgia</option>
+          <option value="HI">Hawaii</option>
+          <option value="ID">Idaho</option>
+          <option value="IL">Illinois</option>
+          <option value="IN">Indiana</option>
+          <option value="IA">Iowa</option>
+          <option value="KS">Kansas</option>
+          <option value="KY">Kentucky</option>
+          <option value="LA">Louisiana</option>
+          <option value="ME">Maine</option>
+          <option value="MD">Maryland</option>
+          <option value="MA">Massachusetts</option>
+          <option value="MI">Michigan</option>
+          <option value="MN">Minnesota</option>
+          <option value="MS">Mississippi</option>
+          <option value="MO">Missouri</option>
+          <option value="MT">Montana</option>
+          <option value="NE">Nebraska</option>
+          <option value="NV">Nevada</option>
+          <option value="NH">New Hampshire</option>
+          <option value="NJ">New Jersey</option>
+          <option value="NM">New Mexico</option>
+          <option value="NY">New York</option>
+          <option value="NC">North Carolina</option>
+          <option value="ND">North Dakota</option>
+          <option value="OH">Ohio</option>
+          <option value="OK">Oklahoma</option>
+          <option value="OR">Oregon</option>
+          <option value="PA">Pennsylvania</option>
+          <option value="RI">Rhode Island</option>
+          <option value="SC">South Carolina</option>
+          <option value="SD">South Dakota</option>
+          <option value="TN">Tennessee</option>
+          <option value="TX">Texas</option>
+          <option value="UT">Utah</option>
+          <option value="VT">Vermont</option>
+          <option value="VA">Virginia</option>
+          <option value="WA">Washington</option>
+          <option value="WV">West Virginia</option>
+          <option value="WI">Wisconsin</option>
+          <option value="WY">Wyoming</option>
+        </select> -->
+      <div>
+        <p *ngIf="first_name.errors && first_name.invalid && first_name.dirty" class="error">First Name required with a minimum length of 4</p>
+        <p *ngIf="last_name.errors && last_name.invalid && last_name.dirty" class="error">Last Name required with a minimum length of 4</p>
+        <p *ngIf="email.errors && email.invalid && email.dirty" class="error">A valid email address is required</p>
+        <p *ngIf="password.errors && password.invalid && password.dirty" class="error">Password must be 8 characters long with 1 uppercase, 1 number, and one special character</p>
+        <p *ngIf="confirm.errors && confirm.invalid && confirm.dirty" class="error">confirm must be 8 characters long with 1 uppercase, 1 number, and one special character</p>
+        
+      </div>
+      <input type="submit" [ngClass]="{'green': myForm.valid}" class="form-control" [disabled]="myForm.invalid"> 
+    </form>
+  </div>
