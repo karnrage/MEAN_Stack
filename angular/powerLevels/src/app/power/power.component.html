@@ -1,0 +1,37 @@
+<!-- <h1>PowerComponent</h1> -->
+<fieldset>
+    <legend>PowerComponent</legend>
+      <div class="main">
+      <span>
+        <form  (submit)="onSubmit()" style="float:left" >
+            <label for="initialPower">Inital Power Level:</label>       
+            <!--***to link the value from the HTML to the component.ts variable need to use [(ngModel)]="selectedPower" aka 2-way binding -->
+            <input
+            name= "power"
+            [(ngModel)]="selectedPower"
+            
+            type="number" 
+            required 
+            pattern="^[0-9]{0,}$"
+            min=1
+            max=100            
+            />
+  
+            <br>
+            <input type="submit" style="float:right" value="Calculate Powers"> 
+          </form>
+      </span> 
+      <img src="../../assets/sspic.jpg" alt="" width="280">
+     
+    </div>
+  <app-human *ngIf="switch" [basicPower]="selectedPower" class="boxer"></app-human>
+  <app-saiyan *ngIf="switch" [saiyanPower]="selectedPower" class="boxer"></app-saiyan>
+  <app-supersaiyan *ngIf="switch" [saiyanPower]="selectedPower" class="boxer"></app-supersaiyan>
+  <app-supersaiyan-two *ngIf="switch" [saiyanPower]="selectedPower" class="boxer"></app-supersaiyan-two>
+  <app-supersaiyan-three *ngIf="switch" [saiyanPower]="selectedPower" class="boxer"></app-supersaiyan-three>
+  <app-supersaiyan-four *ngIf="switch" [saiyanPower]="selectedPower" class="boxer"></app-supersaiyan-four>
+   
+  </fieldset>
+
+  
+  

@@ -1,0 +1,23 @@
+div.main {
+    width: 970px;
+    margin: 30px;
+    padding: 10px;
+    background-color: white;
+    display: inline-block;
+    vertical-align: top;
+}
+h1{
+    width:30px;
+    margin-top:-10px;
+    margin-left:5px;
+    background:white;
+}
+.boxer {
+    padding:30px;
+    display: inline-block;
+    border: 1px solid #000;
+    width: 300px;
+}
+
+/* field { font-family:arial, sans-serif; border-color: #d9d9d9; border-top:solid 1px #c0c0c0; }
+input.field{width:auto; float:left;} */
