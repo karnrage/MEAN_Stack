@@ -1,0 +1,18 @@
+.header, .footer {
+    padding: 1em;
+    color: white;
+    background-color: black;
+    clear: left;
+    text-align: center;
+}
+div.header {
+    width: 100%;
+    /* width: 970px; */
+    border: 1px solid gray;
+    margin: 0 auto;
+    padding: 1em;
+    color: white;
+    background-color: black;
+    clear: left;
+    text-align: center;
+}

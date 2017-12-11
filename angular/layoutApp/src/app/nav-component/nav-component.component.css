@@ -1,0 +1,21 @@
+div.nav {
+    width: 200px;
+    margin: 30px;
+    background-color: royalblue;
+    display: inline-block;
+    vertical-align: top;
+    /* float: left;
+    max-width: 160px;
+    margin: 0;
+    padding: 1em;
+    display: inline-block; */
+}
+
+.nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+   
+.nav ul a {
+    text-decoration: none;
+}
