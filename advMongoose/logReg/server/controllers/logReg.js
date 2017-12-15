@@ -79,7 +79,7 @@ module.exports =  {
         });
     },
 
-//     showOne: function(req,res) {
+    // showOne: function(req,res) {
 //         Alpaca.findOne({_id: req.params.id}, function(err, singleAlpaca){
 //             if (err) {
 //                 console.log(err);

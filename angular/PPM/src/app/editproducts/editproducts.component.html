@@ -1,0 +1,35 @@
+
+<h1>Product's Current Information</h1>
+<div class="product">
+  <img src="{{product.imgsrc}}"/>
+  <h1>{{product.title}}</h1>
+  <h2>${{product.price}}</h2>
+</div>
+
+<h1>Update Product</h1>
+
+<form (submit)="onSubmit()" #createForm="ngForm">
+  Title: 
+    <input 
+      type="text" 
+      name="name"
+      required
+      minlength="4"
+      [(ngModel)] = "product.title"
+      #titleError = "ngModel"
+    > <span *ngIf="titleError.invalid && titleError.dirty">Product Title required, 4 character minimum</span><br><br>
+  Price: 
+    <input 
+      type="number" 
+      name="price"
+      required
+      [(ngModel)]="product.price"
+      #priceError = "ngModel"
+    > <span *ngIf="priceError.invalid && priceError.dirty">Price required</span><br><br>
+  Image URL:
+    <input 
+      type="text"
+      name="imgurl"
+      [(ngModel)]="product.imgsrc"
+    >
+</form>

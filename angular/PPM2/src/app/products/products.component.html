@@ -1,0 +1,16 @@
+<!-- <p>
+  products works!
+</p> -->
+<fieldset>
+  <legend>Products</legend>
+  <div *ngFor="let product of ProductList; let idx = index">
+    <span><img style="height:30px;"src="{{product.imgURL}}"></span>
+  <span><b>{{ product.productname}}</b> 
+  </span>
+  <span> $ {{product.price}} </span>
+  <a [routerLink]="['edit', idx]">Edit Product</a>
+  <a (click)="delete(idx)">Delete</a>
+  
+</div>
+<span *ngIf="ProductList.length == 0"> No Products</span>
+</fieldset >

@@ -1,0 +1,5 @@
+<app-alpha></app-alpha>
+<app-beta></app-beta>
+
+<div class="col-md-6 mx-auto"><app-alpha (githubAcctSet)="setGitHubAcct($event)"></app-alpha></div>
+<div class="col-md-6 mx-auto"><app-beta [acctSet]="githubAcctSet"></app-beta></div>

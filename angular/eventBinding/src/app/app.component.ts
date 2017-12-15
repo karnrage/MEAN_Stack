@@ -123,6 +123,30 @@ export class AppComponent {
     this.clicked = 'EST';
   }
 
+  IST(){
+    var date = new Date();
+    var day = date.getDate();
+    var month = date.getMonth();
+    var hour = date.getHours() + 11.5;
+    var min: any = date.getMinutes();
+    var sec: any = date.getSeconds();
+    var period = '';
+    if (hour > 12){
+      period = 'PM';
+      hour = hour - 12;
+    } else {
+      period = 'AM';
+    }
+    if (min < 10){
+      min = '0' + min;
+    }
+    if (sec < 10){
+      sec = '0' + sec;
+    }
+    this.time = this.months[month] + ' ' +  day + ', ' + hour + ':' + min + ':' + sec + ' ' + period;
+    this.clicked = 'EST';
+  }
+
   clear(){
     this.time = '';
     this.clicked = 'clear';
