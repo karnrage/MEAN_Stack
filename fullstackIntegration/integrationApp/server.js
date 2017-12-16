@@ -1,3 +1,5 @@
+
+
 // - - - - = = = = Configurations = = = = - - - - 
 
 // Express
@@ -21,7 +23,7 @@ mongoose.Promise = global.Promise;
 // app.use(cors());
 
 // Static Directory
-app.use(express.static(__dirname + '/angularApp/dist'));
+app.use(express.static(__dirname + '/angApp/dist'));
 
 // Body Parser 
 const parser = require('body-parser');
@@ -47,6 +49,7 @@ var routes_setter = require('./server/config/routes.js');
 // invoke the function stored in routes_setter and pass it the "app" variable
 routes_setter(app);
 
+app.all("*", (request, response) => { res.sendFile(path.resolve("./angApp/dist/index.html") )});
 
 // - - - - = = = = Model = = = = - - - - 
 // const uniqueValidator = require('mongoose-unique-validator');
