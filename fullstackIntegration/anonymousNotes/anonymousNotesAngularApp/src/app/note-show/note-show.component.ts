@@ -14,6 +14,14 @@ export class NoteShowComponent implements OnInit {
   noteList : any[]=[];
 
   ngOnInit() {
+    this._noteService.showNotes();
+    this._noteService.noteObserver.subscribe(
+      (noteData)=>{
+        console.log("Note data gathered or updated")
+        console.log(noteData); 
+        this.noteList = noteData; 
+      }
+    )
   }
 
 

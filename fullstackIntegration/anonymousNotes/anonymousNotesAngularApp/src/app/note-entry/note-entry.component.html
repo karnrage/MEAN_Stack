@@ -2,6 +2,7 @@
   <div class="row main">
       <div class="main-login main-center">
         <h5>Enter your new note</h5>
+        <h5>DO NOT USE APOSTROPHES (e.g. don't; say do not instead)</h5>
         <form class="ng-untouched ng-pristine ng-invalid" (submit)="onSubmit(); noteForm.reset()" name="noteForm" #noteForm="ngForm">
             
             <!-- Not using Username so commented out -->
@@ -12,7 +13,7 @@
                         <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
                         <input type="text" class="form-control" name="noteText" placeholder="Enter your Note"
                         required minlength="2" maxlength="200" pattern="[^'\x22'\x27]+"
-                        [(ngModel)]="note.noteText" #noteTextError="ngModel"/>
+                        [(ngModel)]="note.noteText" #noteText="ngModel"/>
                         <div class="row text-danger offset-md-2 col-md-8">
                           <p class="col-md-12" *ngIf="noteText.errors?.required && noteText.touched">A note is required.</p>
                           <p class="col-md-12" *ngIf="noteText.errors?.minlength && noteText.touched">A note must have at least 2 characters.</p>

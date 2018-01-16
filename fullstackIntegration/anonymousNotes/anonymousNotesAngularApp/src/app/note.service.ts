@@ -25,6 +25,7 @@ export class NoteService {
         (
           response =>
           {
+            console.log("======getting to the service, before this.shownotes()====")
           this.showNotes()
           },
           error =>

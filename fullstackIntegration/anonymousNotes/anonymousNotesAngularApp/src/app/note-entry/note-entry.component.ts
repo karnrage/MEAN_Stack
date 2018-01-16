@@ -13,7 +13,7 @@ export class NoteEntryComponent implements OnInit {
 
   ngOnInit() {
   }
-  onsubmit(){
+  onSubmit(){
     this._noteService.newNote(this.note);
   }
 }
