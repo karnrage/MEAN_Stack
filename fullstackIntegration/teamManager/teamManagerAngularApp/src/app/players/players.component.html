@@ -1,0 +1,7 @@
+<p>
+  players works!
+</p>
+
+<div *ngIf="playerList" style="text-align:center">
+<p *ngFor="let item of playerList">{{item.position}}  {{item.name}}</p>
+</div>

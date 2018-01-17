@@ -1,0 +1,70 @@
+<p>
+  add-player works!
+</p>
+
+
+<div class="container">
+    <div class="row main">
+        <div class="main-login main-center">
+          <h5>Add Player</h5>
+          <!-- <h5>DO NOT USE APOSTROPHES (e.g. don't; say do not instead)</h5> -->
+          <form class="ng-untouched ng-pristine ng-invalid" (submit)="onSubmit(); playerForm.reset()" name="playerForm" #playerForm="ngForm">
+              
+              <!-- Not using Username so commented out -->
+              <div class="form-group">
+                  <label for="player" class="cols-sm-2 control-label">Player </label>
+                  <div class="cols-sm-10">
+                      <div class="input-group">
+                          <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                          <input type="text" class="form-control" name="name" placeholder="Enter your player name"
+                          required minlength="2" maxlength="20" 
+                          
+                          [(ngModel)]="player.name" #name="ngModel"/>
+                          <div class="row text-danger offset-md-2 col-md-8">
+                            <p class="col-md-12" *ngIf="player.errors?.required && player.touched">A note is required.</p>
+                            <p class="col-md-12" *ngIf="player.errors?.minlength && player.touched">A note must have at least 2 characters.</p>
+                            <p class="col-md-12" *ngIf="player.errors?.maxlength && player.touched">A note may have no more than 200 characters.</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="form-group">
+                  <label for="player" class="cols-sm-2 control-label">Position</label>
+                  <div class="cols-sm-10">
+                      <div class="input-group">
+                          <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                          <input type="text" class="form-control" name="name" placeholder="Enter your player name"
+                          required minlength="2" maxlength="20" 
+                          
+                          [(ngModel)]="player.name" #name="ngModel"/>
+                          <div class="row text-danger offset-md-2 col-md-8">
+                            <p class="col-md-12" *ngIf="player.errors?.required && player.touched">A note is required.</p>
+                            <p class="col-md-12" *ngIf="player.errors?.minlength && player.touched">A note must have at least 2 characters.</p>
+                            <p class="col-md-12" *ngIf="player.errors?.maxlength && player.touched">A note may have no more than 200 characters.</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+  
+            <div class="form-group">
+              <div class="row">
+                <div class="offset-md-2 col-md-4">
+                  <input type="submit"  class="form-control" value="Add Note" [disabled]="playerForm.invalid">
+                </div>
+              </div>
+            </div>
+  
+          </form>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="js/bootstrap.min.js"></script>
+  
+  
