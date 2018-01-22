@@ -20,7 +20,7 @@ export class ManagerService {
   }
 
   newPlayer(player:Player){
-    this._http.post(_dbUrl, player)
+    this._http.post("/newPlayer", player)
         .subscribe
         (
           response =>
@@ -36,7 +36,7 @@ export class ManagerService {
   }
 
   showPlayers(){
-    this._http.get(_dbUrl)
+    this._http.get("/showPlayers")
         .subscribe(
           response =>
           {
@@ -45,6 +45,23 @@ export class ManagerService {
           error =>
             this.currentData("=========ERROR here=======fix it!")
         )
+  }
+
+  deletePlayer(player){
+    this._http.post("/deletePlayer", player)
+    .subscribe
+    (
+      response =>
+      {
+        console.log("======getting to the deletePlayer service, before this.showplayers()====")
+      this.showPlayers()
+      },
+      error =>
+      {
+        console.log("======problem here in deletePLayer:showPlayer ====")
+      }
+    );
+
   }
 
 }

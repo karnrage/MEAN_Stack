@@ -27,7 +27,8 @@ module.exports = {
 
     newPlayer: function (req, res) {
         var player = new Player({
-            name: req.body.name
+            name: req.body.name,
+            position: req.body.position
         });
         console.log(player);
         player.save(function (err, result) {
@@ -42,5 +43,45 @@ module.exports = {
                 return res.json(result);
             }
         });
+    },
+
+    deletePlayer: function (req, res) {
+        console.log(req.body)
+        Player.remove({ _id: req.body._id }, function (error) {
+            if (error) {
+                console.log('===ERROR DELETING DOCUMENT===')
+                return res.json(error)
+            } else {
+                console.log('===SUCCESSFULLY DELETED DOCUMENT===')
+                return res.json({ deleted: true })
+            }
+        })
+        // console.log(req.body)
+        // Player.remove({_id: req.body.id}, function(error){
+        //     console.log("made it to the remove controller")
+        //     return res.json({deleted: true})
+        //     // OR return res.json({'deleted': true})
+        // })    
     }
+
+    // deletePlayer: function (req, res) {
+    //     const sess = req.session;
+    //     if (sess.id) {
+    //         Player.remove({ _id: req.body.id }, function (error) {
+    //             if (error) {
+    //                 console.log('===ERROR DELETING DOCUMENT===')
+    //                 return res.json(error)
+    //             } else {
+    //                 console.log('===SUCCESSFULLY DELETED DOCUMENT===')
+    //                 return res.json({ deleted: true })
+    //             }
+    //         })
+    //     } else {
+    //         console.log('===USER IS NOT SIGNED IN===')
+    //         return res.json({ Error: 'User is not signed in' })
+    //     }
+    // }
+
+  
+
 }

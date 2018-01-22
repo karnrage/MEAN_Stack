@@ -14,13 +14,17 @@ module.exports = function(app) {
     //   res.sendFile(path.resolve("./angularApp/dist/index.html"))
     // });
 
-    app.get( _dbUrl, function (req, res) {
+    app.get( "/showPlayers", function (req, res) {
         console.log("HERE IN MongoPlayers- app.get");
         playerController.showPlayers(req, res);
     });
-    app.post( _dbUrl, function (req, res) {
-        console.log("HERE IN MongoNotes- app.post");
+    app.post( "/newPlayer", function (req, res) {
+        console.log("HERE IN MongoPlayers- app.post");
         playerController.newPlayer(req, res);
+    });
+    app.post( "/deletePlayer", function (req, res) {
+        console.log("HERE IN MongoPlayers delete- app.post");
+        playerController.deletePlayer(req, res);
     });
     app.all("*", (request, response) => { 
         response.sendFile(path.resolve("./teamManagerAngularApp/dist/index.html")) 

@@ -2,6 +2,26 @@
   players works!
 </p>
 
-<div *ngIf="playerList" style="text-align:center">
-<p *ngFor="let item of playerList">{{item.position}}  {{item.name}}</p>
+<div >
+  <div>
+    <table class="table table-striped">
+        <tr>
+          <th>Player Name</th>
+          <th>Preferred Position</th>
+          <th>Action</th>        
+        </tr>
+        <tr *ngFor="let item of playerList">
+          <td>{{item.name}}</td>
+          <td>{{item.position}}</td>
+          <td><button (click)="deleteButtonClick(item)" class="btn btn-danger">Delete Player</button></td>
+        </tr>      
+    </table>
+  </div>
 </div>
+
+<!-- even though I do not have the a td field for id
+i am getting the id because of  <tr *ngFor="let item of playerList"> is pulling all the info -->
+
+<!-- <div *ngIf="playerList" style="text-align:center">
+<p *ngFor="let item of playerList">{{item.position}}  {{item.name}}</p>
+</div> -->

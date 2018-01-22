@@ -25,4 +25,25 @@ export class PlayersComponent implements OnInit {
     )
   }
 
+  deleteButtonClick(id){
+    this._managerService.deletePlayer(id);
+    this._managerService.playerObserver.subscribe(
+      (playerData)=>{
+        console.log("delteButtonClick: player data gathered or updated")
+        console.log(playerData); 
+        this.playerList = playerData; 
+      }
+    )
+  }
+  //   .then(data => {
+  //     if (data.error)
+  //     {
+  //       console.log("======problem in deleting player======")
+  //     } else 
+  //       {
+  //       this._managerService.showPlayers();
+  //       }
+  //   })
+  // }
+
 }
