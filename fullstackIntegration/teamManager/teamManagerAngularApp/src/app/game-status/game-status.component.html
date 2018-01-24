@@ -1,3 +1,25 @@
 <p>
   game-status works!
 </p>
+
+<div >
+    <div>
+      <table class="table table-striped">
+          <tr>
+            <th>Player Name</th>
+            
+            <th>Actions</th>        
+          </tr>
+          <tr *ngFor="let item of playerList">
+            <td>{{item.name}}</td>
+            <!-- <td>{{item.position}}</td> -->
+            <td>
+                <button *ngIf=(click)="[ngClass]="{'on' :btn btn-danger, 'off' :btn btn-default}"">Playering</button>
+                <button (click)= "playing(item)" class="btn btn-danger">Playering</button>
+                <button (click)="notPlaying(item)" class="btn btn-success">not Playering</button>
+                <button (click)="undecided(item)" class="btn btn-warning">undecided</button>
+            </td>
+          </tr>      
+      </table>
+    </div>
+  </div>
