@@ -21,22 +21,23 @@
                   <!-- <button (click)= "playing(item)" class="btn btn-success">Playering</button>
                   <button (click)="notPlaying(item)" class="btn btn-danger">not Playering</button>
                   <button (click)="undecided(item)" class="btn btn-warning">undecided</button> -->
-                <td class="col-7">
+                <td class="col-7">{{item._id}}
                     <button [ngClass]="{
                       'btn-outline-success': item[game] != 'playing',
                       'btn-success': item[game] === 'playing'
                     }" 
                     class="btn" (click)="changeState(item._id, 'playing')">Playing</button>
-                    {{item._id}}
                     
-                    <!-- <button [ngClass]="{
-                      'btn-outline-danger': player[game] != 'not',
-                      'btn-danger': player[game] === 'not'
-                    }" class="btn" (click)="changeStatus(player._id, 'not')">Not Playing</button>
+                    
                     <button [ngClass]="{
-                      'btn-outline-warning': player[game] != 'undecided',
-                      'btn-warning': player[game] === 'undecided'
-                    }" class="btn" (click)="changeStatus(player._id, 'undecided')">Undecided</button> -->
+                      'btn-outline-danger': item[game] != 'not',
+                      'btn-danger': item[game] === 'not'
+                    }" class="btn" (click)="changeState(item._id, 'not')">Not Playing</button>
+
+                    <button [ngClass]="{
+                      'btn-outline-warning': item[game] != 'undecided',
+                      'btn-warning': item[game] === 'undecided'
+                    }" class="btn" (click)="changeState(item._id, 'undecided')">Undecided</button>
               </td>
             </tr>      
         </table>
