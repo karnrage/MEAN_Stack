@@ -62,7 +62,67 @@ module.exports = {
         //     return res.json({deleted: true})
         //     // OR return res.json({'deleted': true})
         // })    
+    },
+
+    // async problem?
+
+    changeState: function (req, res) {
+       
+        Player.find({ _id: req.params.id }, function (err, player) {
+            console.log(req.params.id);
+            console.log(player);
+             console.log("here in controller", req.body);
+             // above is empty on termincal because body is for post request
+             console.log("here in controller", req.params);
+            if (err) {
+                console.log('===ERR changing state===')
+                return res.json(err)
+            } else {
+                if (req.params.game === 'g1'){
+                    // CHANGED BELOW TO state, STILL NO CHANGE
+                    Player.update(player[0], {g1 : req.params.state}, function(err){
+                        console.log("THIS IS THE NEW STATE");
+                        console.log(req.params.state);
+                        console.log(player[0]);
+                        console.log("this is the PLAYER");
+                        if (err){
+                            res.json({'err': 'err saving'})
+                            console.log('===FAILED SAVE g1 status===')
+                        } else {
+                            res.json({'ok': 'everything good'})
+                            console.log('===SUCCESSFULLY g1 status===')
+                        }
+                    })
+                }
+                if (req.params.game === 'g2'){
+                    Player.update(player[0], {g2 : req.params.state}, function(err){
+                        if (err){
+                            res.json({'error': 'error saving'})
+                            console.log('===FAILED SAVE G2 status===')                            
+                        } else {
+                            res.json({'ok': 'everything good'})
+                            console.log('===SUCCESSFULLY G2 status===')
+                        }
+                    })
+                }
+                if (req.params.game === 'g3'){
+                    Player.update(player[0], {g3 : req.params.state}, function(err){
+                        if (err){
+                            res.json({'error': 'error saving'})
+                            console.log('===FAILED SAVE G3 status===')                            
+                        } else {
+                            res.json({'ok': 'everything good'})
+                            console.log('===SUCCESSFULLY G3 status===')
+                        }
+                    })
+                }
+            
+            }
+        })
+
     }
+
+}   
 
     // deletePlayer: function (req, res) {
     //     const sess = req.session;
@@ -81,7 +141,3 @@ module.exports = {
     //         return res.json({ Error: 'User is not signed in' })
     //     }
     // }
-
-  
-
-}

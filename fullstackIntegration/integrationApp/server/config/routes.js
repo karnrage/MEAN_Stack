@@ -1,12 +1,13 @@
-var mongoose = require('mongoose');
-var logReg = mongoose.model('model')
+// var mongoose = require('mongoose');
+// var logReg = mongoose.model('notes')
+
 
 //wrapping the route in a function
-var logRegController = require('../controllers/controller.js');
+var logRegController = require('../controllers/thiscontroller.js');
 module.exports = function(app) {
 
     app 
-    .get('api/tasks', taskController.index)
+    .get('api/tasks', NoteController.index)
     .post('api/tasks', taskController.create)
     .all("*", (req,res,next) => {
       res.sendFile(path.resolve("./angularApp/dist/index.html"))

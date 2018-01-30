@@ -1,0 +1,50 @@
+<!-- <p>
+  new-question works!
+</p> -->
+
+
+<h1>Create New Question</h1>
+<form (submit)="onSubmit()" #createForm="ngForm">
+  Question: 
+    <input 
+      type="text" 
+      name="question"
+      required
+      minlength="15"
+      [(ngModel)] = "trivia.question"
+      #questionError = "ngModel"
+    > <span *ngIf="questionError.invalid && questionError.dirty">question required, 15 character minimum</span><br><br>
+  Correct Answer: 
+    <input 
+      type="text" 
+      name="answer"
+      required
+      [(ngModel)]="trivia.answer"
+      #answerError = "ngModel"
+    > <span *ngIf="answerError.invalid && answerError.dirty">answer required</span><br><br>
+    False Answer 1: 
+    <input 
+      type="text" 
+      name="false1"
+      required
+      [(ngModel)]="trivia.false1"
+      #false1Error = "ngModel"
+    > <span *ngIf="false1Error.invalid && false1Error.dirty">false answer required</span><br><br>
+    False Answer 2: 
+    <input 
+      type="text" 
+      name="false2"
+      required
+      [(ngModel)]="trivia.false2"
+      #false2Error = "ngModel"
+    > <span *ngIf="false2Error.invalid && false2Error.dirty">false answer required</span><br><br>
+
+  <!-- Image URL:
+    <input 
+      type="text"
+      name="imgurl"
+      [(ngModel)]="product.imgsrc"
+    > -->
+    <br />
+  <input type="submit" [disabled]="createForm.invalid" value="Create Product"/>
+</form>

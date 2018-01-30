@@ -1,4 +1,4 @@
-import { Task } from './../task';
+import { Note } from './../task';
 import { TaskService } from './../task.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
@@ -9,16 +9,16 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class TaskNewComponent implements OnInit {
-  newTask: Task = new Task();
+  newTask: Note = new Note();
 
   constructor(private _taskService: TaskService) { }
 
   ngOnInit() {
   }
 
-  onSubmit(task: Task) {
-    this._taskService.createTask(this.newTask);
-    this.newTask = new Task();
+  onSubmit(note: Note) {
+    this._taskService.createNote(this.newTask);
+    this.newTask = new Note();
   }
 
 }

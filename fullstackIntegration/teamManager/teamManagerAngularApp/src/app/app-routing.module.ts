@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { PlayersComponent } from './players/players.component';
 import { AddPlayerComponent } from './add-player/add-player.component';
 import { GameStatusComponent } from './game-status/game-status.component';
+import { GameComponent } from './game-status/game/game.component';
 
 
 
@@ -20,7 +21,7 @@ const routes: Routes = [
     pathMatch: 'full',
     component: PlayersComponent,
   },
-  // need to add addplayercomp
+  
   {
     path: 'addPlayer',
     pathMatch: 'full',
@@ -28,9 +29,12 @@ const routes: Routes = [
   },
   {
     path: 'status',
-    pathMatch: 'full',
     component: GameStatusComponent,
+      children: [{path: '', redirectTo: 'game/1', pathMatch: 'full'},
+      {path: 'game/:id', component: GameComponent},
+      ]
   },
+  
   // {
   //   path: '**',
   //   pathMatch: 'full',

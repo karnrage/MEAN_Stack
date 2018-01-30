@@ -10,6 +10,7 @@ import { PlayersComponent } from './players/players.component';
 import { AddPlayerComponent } from './add-player/add-player.component';
 import { GameStatusComponent } from './game-status/game-status.component';
 import { ManagerService } from './manager.service';
+import { GameComponent } from './game-status/game/game.component';
 
 
 @NgModule({
@@ -17,7 +18,9 @@ import { ManagerService } from './manager.service';
     AppComponent,
     PlayersComponent,
     AddPlayerComponent,
-    GameStatusComponent
+    GameStatusComponent,
+    
+    GameComponent
   ],
   imports: [
     BrowserModule,

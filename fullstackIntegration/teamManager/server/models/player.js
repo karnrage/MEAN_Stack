@@ -31,7 +31,10 @@ var PlayerSchema = new mongoose.Schema({
                 message: "Name cannot contain quotes."
             },
         alias: "Name"
-    }
+    },
+    g1: {type: String, required: false},
+    g2: {type: String, required: false},
+    g3: {type: String, required: false}
 },{ timestamps: true });
 
 mongoose.model('Player', PlayerSchema);
