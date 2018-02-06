@@ -2,7 +2,8 @@ import { Bike } from './bike';
 
 export class User {
     constructor(
-      public id: number = null,
+      // FRONT END NEEDS VALIDATION DATA, DO NOT NEED ID
+      // public id: number = null,
       public first: string = "",
       public last: string = "",
       public email: string = "",

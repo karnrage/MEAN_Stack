@@ -109,7 +109,7 @@ module.exports = {
         console.log("inside mongoose: logUser fxn")
         console.log('request.body:', request.body)
         User.findOne({email: request.body.email}, function(error, DBreply){
-        console.log(errors, DBreply)
+        console.log(error, DBreply)
             if(DBreply || errors == null){
                 console.log("where? usersController login:errors while trying to log in")
                 var loginProb = {'errors': "Not registered", 'loginAgain': true}

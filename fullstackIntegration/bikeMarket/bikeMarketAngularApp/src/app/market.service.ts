@@ -30,7 +30,7 @@ export class MarketService {
         
   }
 
-  logUser(user:User){
+  logUserinService(user:User){
     // need return with promises
     console.log("where?: service :  logUser fxn")
     return this._http.post("/api/logUser", user)
