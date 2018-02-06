@@ -21,9 +21,13 @@ module.exports = function(app) {
     //     console.log("HERE IN MongoPlayers- app.get");
     //     playerController.showPlayers(req, res);
     // });
-    app.post( "/newUser", function (req, res) {
-        console.log("HERE IN MONGO DB USERS ROUTE- app.post");
+    app.post( "/api/newUser", function (req, res) {
+        console.log("HERE IN MONGO: NEW USERS ROUTE- app.post");
         userController.newUser(req, res);
+    });
+    app.post( "/api/logUser", function (req, res) {
+        console.log("HERE IN MONGO: log USERS ROUTE- app.post");
+        userController.logUser(req, res);
     });
     // app.post( "/deletePlayer", function (req, res) {
     //     console.log("HERE IN MongoPlayers delete- app.post");

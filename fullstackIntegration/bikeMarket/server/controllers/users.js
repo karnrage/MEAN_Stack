@@ -60,21 +60,79 @@ module.exports = {
     //     });
     // },
 
-    newUser: function(req, res, err, next){
-        let brandNewUser = new User(req.body);
-        brandNewUser
-            .save()
-            .then((user)=>{
-                            req.session.last = user.last;
-                            req.session.first = user.first;
-                            req.session.user = user._id;
-                            req.session.email = user.email;
-                            console.log(user);
-                            console.log(req.body);
-                            res.json({'loggedinUserId': req.session.user, 'loggedinUserLastName': req.session.last, 'loggedinUserFirstName':req.session.first, 'loggedinUserEmail': req.session.email});
-                          }
-                 )
+    newUser: function(request, response){
+        console.log("inside mongoose: newUser fxn")
+        if(request.body.password != request.body.confirmpassword){
+            
+            console.log("inside mongoose: password mismatch")
+            var mismatch = {'errors': "Passwords mismatch", 'loginAgain': true}
+            return response.json(mismatch)
+        }
+        // capital "User" is var User: Model<any>
+        // lower "user" is (parameter) user: any
+        User.findOne({email: request.body.email}, function(error, user){
+            if(user != null){
+                console.log("eMail already")
+                var duplicate = {'errors': "Already registered", 'loginAgain': true}
+                return response.json(duplicate)
+            }
+       
+        let brandNewUser = new User(request.body);
+        brandNewUser.save(function(error, user){
+                if(error){
+                    console.log("========ERROR IN SAVING USER========")
+                }
+                else{
+                    console.log("========SAVED USER========")
+                    request.session.user = brandNewUser
+                    // MAY HAVE PROBLEMS WITH SAVING ALL AT ONCE, MAY TRY TO SAVE BY EACH ATTRIBUTE
+                    // req.session.last = user.last;
+                    // req.session.first = user.first;
+                    // req.session.user = user._id;
+                    // req.session.email = user.email;
+                    console.log(brandNewUser);
+                    // console.log(req.body);
+                    // res.json({'loggedinUserId': req.session.user, 'loggedinUserLastName': req.session.last, 'loggedinUserFirstName':req.session.first, 'loggedinUserEmail': req.session.email});
+                    // res.json({'Id': req.session.user, 'LastName': req.session.last, 'FirstName':req.session.first, 'UserEmail': req.session.email});
+                    response.json({'user': brandNewUser})  
+                    
+                }
+            });
+            // .then((user)=>{
+                             
+                //         }
+                //  )
+            });
     },
+
+    logUser: function(request, response){
+        console.log("inside mongoose: logUser fxn")
+        console.log('request.body:', request.body)
+        User.findOne({email: request.body.email}, function(error, DBreply){
+        console.log(errors, DBreply)
+            if(DBreply || errors == null){
+                console.log("where? usersController login:errors while trying to log in")
+                var loginProb = {'errors': "Not registered", 'loginAgain': true}
+                return response.json(loginProb)
+            }
+            else{
+                console.log("where? usersController; found user")
+                if (bcrypt.compareSync(request.body.password, DBreply.password)) {
+                    console.log('LOG IN SUCCESS')
+                    request.session.currentUser = DBreply
+                    response.json({'id': DBreply._id, 'firstName': DBreply.firstName, 'email': DBreply.email})  
+                  } else {
+                    console.log("password mismatch");
+                    var mismatch = {'errors': "Users password/email do not match", 'loginAgain': true}
+                    return response.json(mismatch);
+                }
+            }
+        })
+    },
+
+            
+
+    
 
     // deletePlayer: function (req, res) {
     //     console.log(req.body)

@@ -11,31 +11,49 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class MarketService {
-  bikeObserver: BehaviorSubject<any[]>= new BehaviorSubject([]);
-  userObserver: BehaviorSubject<any[]>= new BehaviorSubject([]);
+  // bikeObserver: BehaviorSubject<any[]>= new BehaviorSubject([]);
+  // userObserver: BehaviorSubject<any[]>= new BehaviorSubject([]);
 
   constructor(private _http: Http) { }
 
   currentData(newData:any): void{
-    this.bikeObserver.next(newData);
-    this.userObserver.next(newData);
+    // this.bikeObserver.next(newData);
+    // this.userObserver.next(newData);
   }
 
-  newUser(user:User){
-    this._http.post("/newUser", user)
-        .subscribe
-        (
-          response =>
-          {
-            console.log("======getting to the service, before this.showplayers()====")
-          this.showUsers()
-          },
-          error =>
-          {
-            console.log("======problem here====", error)
-          }
-        );
+  regUser(user:User){
+    // need return with promises
+    console.log("where?: service : regUser fxn")
+    return this._http.post("/api/newUser", user)
+        .map(response => response.json())
+        .toPromise()
+        
   }
+
+  logUser(user:User){
+    // need return with promises
+    console.log("where?: service :  logUser fxn")
+    return this._http.post("/api/logUser", user)
+        .map(response => response.json())
+        .toPromise()
+        
+  }
+
+  // newUser(user:User){
+  //   this._http.post("/api/newUser", user)
+  //       .subscribe
+  //       (
+  //         response =>
+  //         {
+  //           console.log("======getting to the service, before this.showplayers()====")
+  //         this.showUsers()
+  //         },
+  //         error =>
+  //         {
+  //           console.log("======problem here====", error)
+  //         }
+  //       );
+  // }
 
   showUsers(){
     this._http.get("/showUsers")

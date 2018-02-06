@@ -1,5 +1,7 @@
 <p>
-  register works!
+This is MEAN. Once hit service
+You NEED to switchf from Chrome console
+to back end terminal
 </p>
 
 <div class="container">
@@ -20,8 +22,8 @@
                             required
                             type="text"
                             name="first"
-                            minlength="1"
-                            maxlength="30"
+                            minlength="2"
+                            maxlength="10"
                             [(ngModel)]="user.first"
                             #first="ngModel"
                           />
@@ -31,9 +33,9 @@
                             <p *ngIf='!valid && first.errors.maxlength && first.dirty'>Too Long: No more than 24 characters</p>
                             <p *ngIf='!valid && first.errors.required && first.dirty'>Required : First Name</p>
                           </div>
-                      </div>
                     </div>
                 </div>
+            </div>
 
      
             <div class="form-group">
@@ -42,15 +44,15 @@
                     <div class="input-group">
                       <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
 
-                    <input
-                      required
-                      type="text"
-                      name="last"
-                      minlength="1"
-                      maxlength="30"
-                      [(ngModel)]="user.last"
-                      #last="ngModel"
-                    />
+                        <input
+                          required
+                          type="text"
+                          name="last"
+                          minlength="2"
+                          maxlength="30"
+                          [(ngModel)]="user.last"
+                          #last="ngModel"
+                        />
 
                     <div *ngIf = "last.errors">      
                       <p *ngIf='!valid && last.errors.minlength && last.dirty'>Too Short: At least 2 characters</p>
@@ -68,23 +70,23 @@
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
 
-                    <input
-                      required
-                      type="email"
-                      name="email"
-                      minlength="1"
-                      maxlength="30"
-                      [(ngModel)]="user.email"
-                      #email="ngModel"
-                    />
+                          <input
+                            required
+                            type="email"
+                            name="email"
+                            minlength="2"
+                            maxlength="30"
+                            [(ngModel)]="user.email"
+                            #email="ngModel"
+                          />
 
-                    <div *ngIf = "email.errors">      
-                      <p *ngIf='!valid && email.errors.minlength && email.dirty'>Too Short: At least 2 characters</p>
-                      <p *ngIf='!valid && email.errors.maxlength && email.dirty'>Too Long: No more than 24 characters</p>
-                      <p *ngIf='!valid && email.errors.required && email.dirty'>Required : Email</p>
+                      <div *ngIf = "email.errors">      
+                        <p *ngIf='!valid && email.errors.minlength && email.dirty'>Too Short: At least 2 characters</p>
+                        <p *ngIf='!valid && email.errors.maxlength && email.dirty'>Too Long: No more than 24 characters</p>
+                        <p *ngIf='!valid && email.errors.required && email.dirty'>Required : Email</p>
+                      </div>
                     </div>
-                  </div>
-                </div>
+              </div>
             </div>
 
     
@@ -94,24 +96,24 @@
                   <div class="input-group">
                       <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
 
-            <input
-              required
-              type="password"
-              name="password"
-              minlength="1"
-              maxlength="30"
-              [(ngModel)]="user.password"
-              #password="ngModel"
-            />
+                        <input
+                          required
+                          type="password"
+                          name="password"
+                          minlength="2"
+                          maxlength="30"
+                          [(ngModel)]="user.password"
+                          #password="ngModel"
+                        />
 
-            <div *ngIf = "password.errors">      
-              <p *ngIf='!valid && password.errors.minlength && password.dirty'>Too Short: At least 2 characters</p>
-              <p *ngIf='!valid && password.errors.maxlength && password.dirty'>Too Long: No more than 24 characters</p>
-              <p *ngIf='!valid && password.errors.required && password.dirty'>Required : password</p>
+                      <div *ngIf = "password.errors">      
+                        <p *ngIf='!valid && password.errors.minlength && password.dirty'>Too Short: At least 2 characters</p>
+                        <p *ngIf='!valid && password.errors.maxlength && password.dirty'>Too Long: No more than 24 characters</p>
+                        <p *ngIf='!valid && password.errors.required && password.dirty'>Required : password</p>
+                      </div>
+              </div>
             </div>
-          </div>
         </div>
-    </div>
        
           <div class="form-group">
               <label for="player" class="cols-sm-2 control-label"> Your Matching Password:</label>
@@ -121,33 +123,33 @@
               <input
                 required
                 type="password"
-                name="password"
-                minlength="1"
+                name="confirmpassword"
+                minlength="2"
                 maxlength="30"
                 [(ngModel)]="user.confirmpassword"
                 #confirmpassword="ngModel"
               />
 
-              <div *ngIf = "confirmpassword.errors">      
-                <p *ngIf='!valid && confirmpassword.errors.minlength && confirmpassword.dirty'>Too Short: At least 2 characters</p>
-                <p *ngIf='!valid && confirmpassword.errors.maxlength && confirmpassword.dirty'>Too Long: No more than 24 characters</p>
-                <p *ngIf='!valid && confirmpassword.errors.required && confirmpassword.dirty'>Required : password match</p>
-              </div>
+                <div *ngIf = "confirmpassword.errors">      
+                  <p *ngIf='!valid && confirmpassword.errors.minlength && confirmpassword.dirty'>Too Short: At least 2 characters</p>
+                  <p *ngIf='!valid && confirmpassword.errors.maxlength && confirmpassword.dirty'>Too Long: No more than 24 characters</p>
+                  <p *ngIf='confirmpassword != password && confirmpassword.touched'>Required : password match</p>
+                </div>
             </div>
           </div>
         </div>
 
           <!-- <input > does not have a closing tag -->
             <button *ngIf="!userForm.valid || user.confirmpassword != user.password">Please check your input entries</button>
-            <input *ngIf='userForm.valid && user.confirmpassword == user.password' type="submit"  type="button" value="Register" class="btn btn-primary btn-lg login-button">
+            <input *ngIf='userForm.valid && user.confirmpassword == user.password' [disabled]="userForm.invalid" type="submit"   value="Register" class="btn btn-primary btn-lg login-button">
 
           </fieldset>
           </form>
 
-      </div>
     </div>
   </div>
-    
+</div>
+
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
