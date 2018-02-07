@@ -30,7 +30,7 @@ export class Login2Component implements OnInit {
            }
            else{
             //  change below back to "/browse"
-             return this._router.navigateByUrl("/")
+             return this._router.navigateByUrl("/browse")
            }  
          })
           .catch(err => console.log(err))

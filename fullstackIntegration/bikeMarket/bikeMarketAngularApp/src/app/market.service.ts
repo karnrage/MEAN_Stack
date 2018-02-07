@@ -55,15 +55,16 @@ export class MarketService {
   //       );
   // }
 
-  showUsers(){
-    this._http.get("/showUsers")
-        .subscribe(
-          response =>
-          {
-            this.currentData(response.json())
-          },
-          error =>
-            this.currentData("=========ERROR here=======fix it!")
-        )
+  showBikes(){
+    // no subscribe with promises
+    // this._http.get("/showBikes")
+    //     .subscribe(
+    //       response =>
+    //       {
+    //         this.currentData(response.json())
+    //       },
+    //       error =>
+    //         this.currentData("=========ERROR here=======fix it!")
+    //     )
   }
 }

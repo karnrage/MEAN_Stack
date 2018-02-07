@@ -78,6 +78,8 @@ module.exports = {
             }
        
         let brandNewUser = new User(request.body);
+        //NEED TO SPLUT UP INTO INDIVIDUAL ATTRIBUTES AND BREAKOUT PASSWORD AND HASH THAT SEPARATELY. SAVED FOR LATER
+        // ooooorrr DO THE PRESAVE IN THE USER MODEL IN MONGOOSE
         brandNewUser.save(function(error, user){
                 if(error){
                     console.log("========ERROR IN SAVING USER========")
@@ -110,14 +112,16 @@ module.exports = {
         console.log('request.body:', request.body)
         User.findOne({email: request.body.email}, function(error, DBreply){
         console.log(error, DBreply)
-            if(DBreply || errors == null){
+            if((!DBreply) || (error == !null)){
                 console.log("where? usersController login:errors while trying to log in")
                 var loginProb = {'errors': "Not registered", 'loginAgain': true}
                 return response.json(loginProb)
             }
             else{
                 console.log("where? usersController; found user")
-                if (bcrypt.compareSync(request.body.password, DBreply.password)) {
+                // if (bcrypt.compareSync(request.body.password, DBreply.password)) {
+                // CAN BRING UP BACK AND COMMENT OUT BELOW IF I DO PRE.SAVE IN THE USER MODEL
+                if ((request.body.password == DBreply.password)) {
                     console.log('LOG IN SUCCESS')
                     request.session.currentUser = DBreply
                     response.json({'id': DBreply._id, 'firstName': DBreply.firstName, 'email': DBreply.email})  

@@ -10,6 +10,8 @@ import { AppComponent } from './app.component';
 import { MarketService } from './market.service';
 import { RegisterComponent } from './register/register.component';
 import { Login2Component } from './login2/login2.component';
+import { BikeLinksComponent } from './bike-links/bike-links.component';
+import { LandingComponent } from './landing/landing.component';
 
 
 @NgModule({
@@ -17,6 +19,8 @@ import { Login2Component } from './login2/login2.component';
     AppComponent,
     RegisterComponent,
     Login2Component,
+    BikeLinksComponent,
+    LandingComponent,
   ],
   imports: [
     BrowserModule,

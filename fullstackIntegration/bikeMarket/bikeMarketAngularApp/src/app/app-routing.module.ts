@@ -7,6 +7,7 @@ import { RegisterComponent } from './register/register.component';
 import { Login2Component } from './login2/login2.component';
 // import { GameStatusComponent } from './game-status/game-status.component';
 // import { GameComponent } from './game-status/game/game.component';
+import { BikeLinksComponent } from './bike-links/bike-links.component';
 
 
 const routes: Routes = [
@@ -14,8 +15,13 @@ const routes: Routes = [
   // {
   //   path: '',
   //   pathMatch: 'full',
-  //   component: AppComponent,
+  //   component: LandingComponent,
   // },
+  {
+    path: 'browse',
+    pathMatch: 'full',
+    component: BikeLinksComponent,
+  },
 
 
 ];

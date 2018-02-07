@@ -4,6 +4,7 @@ import { User } from '../user';
 // import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router'
 
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -12,9 +13,9 @@ import { Router } from '@angular/router'
 export class RegisterComponent implements OnInit {
   // need to make below variable so angular knows the model its dealing with?
   user: User = new User();
-  // createed a variable to hold the error message
+  entryGranted = false;
+  // below createed a variable to hold the error message
   ErrMessage: string;
-  valid = false;
   newUser = {};
 
   constructor(private _marketService: MarketService, private _router: Router) { }
@@ -36,7 +37,9 @@ export class RegisterComponent implements OnInit {
            }
            else{
             //  change below back to "/browse"
-             return this._router.navigateByUrl("/")
+            //  var entryGranted = true;
+            // do this : set in session. 
+             return this._router.navigateByUrl("/browse")
            }  
          })
           .catch(err => console.log(err))
