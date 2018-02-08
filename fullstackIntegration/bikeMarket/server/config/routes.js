@@ -33,6 +33,11 @@ module.exports = function(app) {
         console.log(req.session.email);
         userController.logUser(req, res);
     });
+    app.get("/api/logout", function (req,res){
+        console.log("where?: here in Mongoose: logout user route - app.get");
+        userController.logout(req,res);
+        
+    })
     // app.post( "/deletePlayer", function (req, res) {
     //     console.log("HERE IN MongoPlayers delete- app.post");
     //     playerController.deletePlayer(req, res);

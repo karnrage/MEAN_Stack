@@ -39,6 +39,15 @@ export class MarketService {
         
   }
 
+  logoutinService(){
+    // need return with promises
+    console.log("where?: service :  logout fxn")
+    return this._http.get("/api/logout")
+        // .map(response => response.json())
+        // .toPromise()
+        
+  }
+
   // newUser(user:User){
   //   this._http.post("/api/newUser", user)
   //       .subscribe

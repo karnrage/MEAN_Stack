@@ -22,4 +22,9 @@ export class BikeLinksComponent implements OnInit {
   ngOnInit() {
   }
 
+  logout(){
+    console.log("where?: bike-links component: logout fxn")
+    this._marketService.logoutinService();
+    this._router.navigateByUrl('/');
+  }
 }

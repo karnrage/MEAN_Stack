@@ -140,6 +140,7 @@ module.exports = {
         console.log('session:', req.session.id)
         if (req.session.id) {
             req.session.destroy();
+            return res.json({ loggedOut: 'User is no longer in session' })
         } else {
             console.log('------session is over---logged out----')
             return res.json({ Error: 'User is not in session' })
