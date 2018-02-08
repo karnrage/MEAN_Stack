@@ -141,7 +141,7 @@ to back end terminal
 
           <!-- <input > does not have a closing tag -->
             <button *ngIf="!userForm.valid || user.confirmpassword != user.password">Please check your input entries</button>
-            <input *ngIf='userForm.valid && user.confirmpassword == user.password' [disabled]="userForm.invalid" type="submit"   value="Register" class="btn btn-primary btn-lg login-button">
+            <input *ngIf='userForm.valid && user.confirmpassword == user.password' [disabled]="userForm.invalid" (click)='register($event)' type="submit"   value="Register" class="btn btn-primary btn-lg login-button">
 
           </fieldset>
           </form>

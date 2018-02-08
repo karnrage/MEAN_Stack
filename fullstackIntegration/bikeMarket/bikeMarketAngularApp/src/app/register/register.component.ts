@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { MarketService } from '../market.service';
 import { User } from '../user';
 // import { FormsModule } from '@angular/forms';
@@ -17,6 +17,9 @@ export class RegisterComponent implements OnInit {
   // below createed a variable to hold the error message
   ErrMessage: string;
   newUser = {};
+  registeredUser = {};
+
+  @Output() myLoginEvent = new EventEmitter();
 
   constructor(private _marketService: MarketService, private _router: Router) { }
 
@@ -24,7 +27,7 @@ export class RegisterComponent implements OnInit {
   }
   // res.json({'loggedinUserId': req.session.user, 'loggedinUserLastName': req.session.last, 'loggedinUserFirstName':req.session.first, 'loggedinUserEmail': req.session.email});
   
-  register(){
+  register(event){
     console.log("where?: register component : register fxn")
     this._marketService.regUser(this.user)
     // IF .then is redlined, then make sure to put "return" before this._http.post in service
@@ -39,6 +42,9 @@ export class RegisterComponent implements OnInit {
             //  change below back to "/browse"
             //  var entryGranted = true;
             // do this : set in session. 
+            console.log(response.registerSessionUser);
+            this.registeredUser = response.registerSessionUser;
+            this.myLoginEvent.emit(this.registeredUser); 
              return this._router.navigateByUrl("/browse")
            }  
          })

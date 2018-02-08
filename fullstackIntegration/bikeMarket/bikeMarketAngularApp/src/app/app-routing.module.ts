@@ -22,6 +22,11 @@ const routes: Routes = [
     pathMatch: 'full',
     component: BikeLinksComponent,
   },
+  // {
+  //   path: 'logoff',
+  //   pathMatch: 'full',
+  //   component: Component,
+  // },
 
 
 ];

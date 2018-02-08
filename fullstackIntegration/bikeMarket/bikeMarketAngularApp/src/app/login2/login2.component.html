@@ -77,7 +77,7 @@
   
             <!-- <input > does not have a closing tag -->
               <button *ngIf="!logUserForm.valid">Please check your input entries</button>
-              <input *ngIf='logUserForm.valid' [disabled]="logUserForm.invalid" type="submit"  value="Login" class="btn btn-primary btn-lg login-button">
+              <input *ngIf='logUserForm.valid' (click)='login($event)' [disabled]="logUserForm.invalid" type="submit"  value="Login" class="btn btn-primary btn-lg login-button">
   
             </fieldset>
             </form>

@@ -23,10 +23,14 @@ module.exports = function(app) {
     // });
     app.post( "/api/newUser", function (req, res) {
         console.log("HERE IN MONGO: NEW USERS ROUTE- app.post");
+        req.session.email = req.body.email;
+        console.log(req.session.email);
         userController.newUser(req, res);
     });
     app.post( "/api/logUser", function (req, res) {
         console.log("HERE IN MONGO: log USERS ROUTE- app.post");
+        req.session.email = req.body.email;
+        console.log(req.session.email);
         userController.logUser(req, res);
     });
     // app.post( "/deletePlayer", function (req, res) {

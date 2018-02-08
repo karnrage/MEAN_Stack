@@ -96,7 +96,7 @@ module.exports = {
                     // console.log(req.body);
                     // res.json({'loggedinUserId': req.session.user, 'loggedinUserLastName': req.session.last, 'loggedinUserFirstName':req.session.first, 'loggedinUserEmail': req.session.email});
                     // res.json({'Id': req.session.user, 'LastName': req.session.last, 'FirstName':req.session.first, 'UserEmail': req.session.email});
-                    response.json({'user': brandNewUser})  
+                    response.json({'registerSessionUser': brandNewUser})  
                     
                 }
             });
@@ -124,8 +124,9 @@ module.exports = {
                 if ((request.body.password == DBreply.password)) {
                     console.log('LOG IN SUCCESS')
                     request.session.currentUser = DBreply
-                    response.json({'id': DBreply._id, 'firstName': DBreply.firstName, 'email': DBreply.email})  
-                  } else {
+                    // response.json({'id': DBreply._id, 'firstName': DBreply.firstName, 'email': DBreply.email})  
+                    response.json({'sessionUser': DBreply})
+                } else {
                     console.log("password mismatch");
                     var mismatch = {'errors': "Users password/email do not match", 'loginAgain': true}
                     return response.json(mismatch);
@@ -133,6 +134,17 @@ module.exports = {
             }
         })
     },
+
+    logout: function(request, response){
+        console.log("inside mongoose: logout fxn")
+        console.log('session:', req.session.id)
+        if (req.session.id) {
+            req.session.destroy();
+        } else {
+            console.log('------session is over---logged out----')
+            return res.json({ Error: 'User is not in session' })
+        }
+    }
 
             
 
