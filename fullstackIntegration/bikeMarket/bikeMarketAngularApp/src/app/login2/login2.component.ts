@@ -16,7 +16,7 @@ export class Login2Component implements OnInit {
   // loggedIn = false;
 
   //below: created to send info back to parent
-  @Output() myLoginEvent = new EventEmitter();
+  // @Output() myLoginEvent = new EventEmitter();
   // @Output() myLoginEvent = new EventEmitter<boolean>()
  
   constructor(private _marketService: MarketService, private _router: Router) { }
@@ -25,19 +25,20 @@ export class Login2Component implements OnInit {
   }
   login(event){
     console.log("where?: login component : login fxn")
-    this._marketService.logUserinService(this.logUser)
     // IF .then is redlined, then make sure to put "return" before this._http.post in service
+    this._marketService.logUserinService(this.logUser)
          .then(response => this.returningUser = response)
          .then(response => {
   console.log("where?: inside login.component: login fxn: this._marketService.logUser(this.logUser)")
 
-           if (response.loginAgain){
+           if ("loginAgain" in response){
              return this._router.navigateByUrl('/')
            }
            else{
-             console.log(response.sessionUser);
-             this.loggedIn = response.sessionUser;
-             this.myLoginEvent.emit(this.loggedIn);            
+             console.log(response);
+            //  this.loggedIn = response.sessionUser;
+            //  this.myLoginEvent.emit(this.loggedIn);   
+            // SADLY ABOVE NO LONGER NEEDED   
              //  change below back to "/browse" after get login to work
             return this._router.navigateByUrl("/browse")
            }  

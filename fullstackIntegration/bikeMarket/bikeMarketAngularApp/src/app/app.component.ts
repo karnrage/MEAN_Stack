@@ -11,14 +11,20 @@ import { Router } from '@angular/router'
 export class AppComponent {
   title = 'Cycle Market';
   // @Output() myLoginReceived; not needed
-  logged = false;
+  logged :boolean = false ;
+
 
   // serviceWayDataloggedIn = {};
   constructor(private _marketService: MarketService, private _router: Router) { }
 
   ngOnInit() {
     console.log(this.logged)
+  this._marketService.userObserver.subscribe(
+    dataTemp => {
+      this.logged = dataTemp;
     }
+  )
+  }
   
   // entryGranted:any <-- no need, use session
   // call a/the session attribute to work if "!null" then *ngIf turn off the element

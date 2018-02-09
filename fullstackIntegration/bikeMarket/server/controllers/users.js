@@ -137,13 +137,13 @@ module.exports = {
 
     logout: function(request, response){
         console.log("inside mongoose: logout fxn")
-        console.log('session:', req.session.id)
-        if (req.session.id) {
-            req.session.destroy();
-            return res.json({ loggedOut: 'User is no longer in session' })
+        console.log('session:', request.session.id)
+        if (request.session.id) {
+            request.session.destroy();
+            return response.json({ loggedOut: 'User is no longer in session' })
         } else {
             console.log('------session is over---logged out----')
-            return res.json({ Error: 'User is not in session' })
+            return response.json({ Error: 'User is not in session' })
         }
     }
 

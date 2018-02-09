@@ -19,11 +19,17 @@ export class RegisterComponent implements OnInit {
   newUser = {};
   registeredUser = {};
 
-  @Output() myLoginEvent = new EventEmitter();
+  // resetData: any [] = [];
+  resetData :boolean = false ;
+
+  // @Output() myLoginEvent = new EventEmitter();
 
   constructor(private _marketService: MarketService, private _router: Router) { }
 
   ngOnInit() {
+    this._marketService.userObserver.subscribe(
+      (data) => {this.resetData = data}
+    )
   }
   // res.json({'loggedinUserId': req.session.user, 'loggedinUserLastName': req.session.last, 'loggedinUserFirstName':req.session.first, 'loggedinUserEmail': req.session.email});
   
@@ -44,7 +50,7 @@ export class RegisterComponent implements OnInit {
             // do this : set in session. 
             console.log(response.registerSessionUser);
             this.registeredUser = response.registerSessionUser;
-            this.myLoginEvent.emit(this.registeredUser); 
+            // this.myLoginEvent.emit(this.registeredUser); 
              return this._router.navigateByUrl("/browse")
            }  
          })

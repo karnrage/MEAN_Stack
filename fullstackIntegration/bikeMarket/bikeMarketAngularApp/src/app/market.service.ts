@@ -12,13 +12,17 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class MarketService {
   // bikeObserver: BehaviorSubject<any[]>= new BehaviorSubject([]);
-  // userObserver: BehaviorSubject<any[]>= new BehaviorSubject([]);
+  userObserver: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
+  userSet(lightswitch){
+    this.userObserver.next(lightswitch);
+  }
 
   constructor(private _http: Http) { }
 
   currentData(newData:any): void{
     // this.bikeObserver.next(newData);
-    // this.userObserver.next(newData);
+    this.userObserver.next(newData);
   }
 
   regUser(user:User){
@@ -33,20 +37,45 @@ export class MarketService {
   logUserinService(user:User){
     // need return with promises
     console.log("where?: service :  logUser fxn")
-    return this._http.post("/api/logUser", user)
+    //must do as below. new Promise is saying I will do what you want me to do
+    // however you must wait for me to get the info back to you.
+    return new Promise((resolve, reject) => {
+      this._http.post("/api/logUser", user)
         .map(response => response.json())
         .toPromise()
+        .then(response => {
+            if ( "sessionUser" in response){
+              this.userSet(true)
+              resolve(response);
+            }
+            else {
+              reject(response);
+            }
+          });
+      }
+    )
         
   }
 
   logoutinService(){
     // need return with promises
     console.log("where?: service :  logout fxn")
-    return this._http.get("/api/logout")
+    this._http.get("/api/logout")
+    //this below only sets the observable status. Changes happen in the component
+      .subscribe(
+        response =>
+        {
+        this.userSet(false) 
+        // this.currentData(response.json())
+        console.log("======inside logoutinService: subscribe fxn after userset(false)====")
+        },
+        error => this.currentData("=========ERROR: WHERE? logoutinService .subscribe====")
+      )
+  }
         // .map(response => response.json())
         // .toPromise()
         
-  }
+ 
 
   // newUser(user:User){
   //   this._http.post("/api/newUser", user)
