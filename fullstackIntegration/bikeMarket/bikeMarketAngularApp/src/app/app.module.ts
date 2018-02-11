@@ -12,6 +12,9 @@ import { RegisterComponent } from './register/register.component';
 import { Login2Component } from './login2/login2.component';
 import { BikeLinksComponent } from './bike-links/bike-links.component';
 import { LandingComponent } from './landing/landing.component';
+import { BikeItemsComponent } from './bike-links/bike-items/bike-items.component';
+import { BikeCreateComponent } from './bike-links/bike-create/bike-create.component';
+import { BikeEditComponent } from './bike-links/bike-create/bike-edit/bike-edit.component';
 
 
 @NgModule({
@@ -21,6 +24,9 @@ import { LandingComponent } from './landing/landing.component';
     Login2Component,
     BikeLinksComponent,
     LandingComponent,
+    BikeItemsComponent,
+    BikeCreateComponent,
+    BikeEditComponent,
   ],
   imports: [
     BrowserModule,
