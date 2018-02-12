@@ -14,15 +14,21 @@ import { Router } from '@angular/router'
   styleUrls: ['./bike-links.component.css']
 })
 export class BikeLinksComponent implements OnInit {
-
+  showBike: Bike[];
+  showUser: User = new User();
   constructor(private _marketService: MarketService, private _route: ActivatedRoute, private _router: Router) { }
   
   bikeList : any[]=[];
 
   ngOnInit() {
+    this.allBikes()
     // make fxn here to query all bikes
   }
 
+  allBikes(){
+    return  this._marketService.showBike().then(response => this.showBike = response)
+  }
+  
   logout(){
     console.log("where?: bike-links component: logout fxn")
     this._marketService.logoutinService();

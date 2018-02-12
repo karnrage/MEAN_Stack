@@ -39,6 +39,30 @@ module.exports = {
         }
         
     },
+    showBike:function(request, response){
+        let possibleSession = request.session;
+        console.log('-----------INSIDE MONGOOSE: SHOWBIKE FXN---------')
+        if (possibleSession.id){
+            Bike.find({}).populate('_user').exec(function (error, DBreply)
+                {
+                if (error){
+                    console.log("=====problem getting all bikes======")
+                    return response.json(error)
+                }
+                else{
+                    console.log("====got all the bikess======")
+                    console.log('Database says:', DBreply)
+                    return response.json(DBreply)
+                    
+                }
+            }            
+        )}
+        else{
+            console.log("------ NEED A SIGNED IN USER======")
+            return response.json({ error : "no one is logged in"})
+        }
+        
+    },
     // showPlayers: function (req, res) {
     //     // var players = Player.find({}).sort('-createdAt').exec(function (err, players) { DO NOT NEED TO SET EQUAL TO VARIABLE, BEING CALLED IN (err, players)
     //     Player.find({}).sort('-createdAt').exec(function (err, players) {

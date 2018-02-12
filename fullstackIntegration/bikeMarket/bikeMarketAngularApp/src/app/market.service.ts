@@ -13,7 +13,8 @@ import 'rxjs/add/operator/toPromise';
 export class MarketService {
   // bikeObserver: BehaviorSubject<any[]>= new BehaviorSubject([]);
   userObserver: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-
+  userObserverData: BehaviorSubject<any[]> = new BehaviorSubject([]);
+  
   userSet(lightswitch){
     this.userObserver.next(lightswitch);
   }
@@ -22,7 +23,7 @@ export class MarketService {
 
   currentData(newData:any): void{
     // this.bikeObserver.next(newData);
-    this.userObserver.next(newData);
+    this.userObserverData.next(newData);
   }
 
   regUser(user:User){
@@ -82,25 +83,11 @@ export class MarketService {
     .toPromise()
   }
         
- 
-
-  // newUser(user:User){
-  //   this._http.post("/api/newUser", user)
-  //       .subscribe
-  //       (
-  //         response =>
-  //         {
-  //           console.log("======getting to the service, before this.showplayers()====")
-  //         this.showUsers()
-  //         },
-  //         error =>
-  //         {
-  //           console.log("======problem here====", error)
-  //         }
-  //       );
-  // }
-
-  showBikes(){
+  showBike(){
+    console.log("where?: service: showBike fxn")
+    return this._http.get('/api/showAll')
+    .map(response => response.json())
+    .toPromise()
     // no subscribe with promises
     // this._http.get("/showBikes")
     //     .subscribe(
