@@ -28,6 +28,14 @@ var BikeSchema = new mongoose.Schema({
         trim: true,
         alias: "Desc"
     },
+    location: { 
+        type:String,
+        required: true,
+        minlength: 2,
+        maxlength: 30,
+        trim: true,
+        alias: "Location"
+    },    
     price: { 
         type:Number,
         required: true,

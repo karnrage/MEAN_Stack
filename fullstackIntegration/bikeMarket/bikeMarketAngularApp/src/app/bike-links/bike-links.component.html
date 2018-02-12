@@ -31,21 +31,14 @@
           <tr>
             
             
-            <th>Actions</th>        
+            <th>Bikes</th>        
           </tr>
           <tr *ngFor="let item of showBike">
             <td>Title:{{item.title}}</td>
             <td>Price:{{item.price}}</td>
             <td>Desc:{{item.desc}}</td>
             <td>location:{{item.location}}</td>
-            <td>createdBy:{{item.createdBy}}</td>
-            <!-- <td>{{item.position}}</td> -->
-            <!-- <td> -->
-                <!-- <button (click)="onClick()" [ngClass]="{'on' :btn btn-danger, 'off' :btn btn-default}"">Playering</button> -->
-                <!-- <button (click)= "playing(item)" class="btn btn-success">Playering</button>
-                <button (click)="notPlaying(item)" class="btn btn-danger">not Playering</button>
-                <button (click)="undecided(item)" class="btn btn-warning">undecided</button> -->
-
+            <td>createdBy:{{item._user.first}}</td>
           </tr>      
       </table>
     </div>
