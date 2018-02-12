@@ -40,7 +40,7 @@ export class Login2Component implements OnInit {
             //  this.myLoginEvent.emit(this.loggedIn);   
             // SADLY ABOVE NO LONGER NEEDED   
              //  change below back to "/browse" after get login to work
-            return this._router.navigateByUrl("/browse")
+            return this._router.navigateByUrl("browse")
            }  
          })
           .catch(err => console.log(err))

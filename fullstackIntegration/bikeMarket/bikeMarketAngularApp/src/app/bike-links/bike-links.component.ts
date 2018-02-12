@@ -20,6 +20,7 @@ export class BikeLinksComponent implements OnInit {
   bikeList : any[]=[];
 
   ngOnInit() {
+    // make fxn here to query all bikes
   }
 
   logout(){

@@ -1,3 +1,133 @@
 <p>
   bike-create works!
 </p>
+    <div class="container">
+        <div class="row main">
+            <div class="main-login main-center">
+    
+              <h1 style="text-align: left">Create Listing</h1>
+    
+              <form class="ng-untouched ng-pristine ng-invalid" (submit)="create(); createForm.reset()" #createForm="ngForm">
+                <fieldset>
+                
+               
+                <div class="form-group">
+                    <label for="title" class="cols-sm-2 control-label">Title:</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+    
+                              <input
+                                required
+                                type="text"
+                                name="title"
+                                minlength="2"
+                                maxlength="30"
+                                [(ngModel)]="createBike.title"
+                                #title="ngModel"
+                              />
+    
+                          <div *ngIf = "title.errors">      
+                            <p *ngIf='!valid && title.errors.minlength && title.dirty'>Too Short: At least 2 characters</p>
+                            <p *ngIf='!valid && title.errors.maxlength && title.dirty'>Too Long: No more than 30 characters</p>
+                            <p *ngIf='!valid && title.errors.required && title.dirty'>Required : title</p>
+                          </div>
+                        </div>
+                  </div>
+                </div>
+    
+        
+              <div class="form-group">
+                  <label for="desc" class="cols-sm-2 control-label">description:</label>
+                  <div class="cols-sm-10">
+                      <div class="input-group">
+                          <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+    
+                            <input
+                              required
+                              type="text"
+                              name="description"
+                              minlength="2"
+                              maxlength="200"
+                              [(ngModel)]="createBike.desc"
+                              #desc="ngModel"
+                            />
+    
+                          <div *ngIf = "desc.errors">      
+                            <p *ngIf='!valid && desc.errors.minlength && desc.dirty'>Too Short: At least 2 characters</p>
+                            <p *ngIf='!valid && desc.errors.maxlength && desc.dirty'>Too Long: No more than 200 characters</p>
+                            <p *ngIf='!valid && desc.errors.required && desc.dirty'>Required : desc</p>
+                          </div>
+                  </div>
+                </div>
+            </div>
+
+                 
+            <div class="form-group">
+                <label for="price" class="cols-sm-2 control-label">price:</label>
+                <div class="cols-sm-10">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+  
+                          <input
+                            required
+                            type="text"
+                            name="price"
+                            minlength="2"
+                            maxlength="24"
+                            [(ngModel)]="createBike.price"
+                            #price="ngModel"
+                          />
+  
+                        <div *ngIf = "price.errors">      
+                          <p *ngIf='!valid && price.errors.minlength && price.dirty'>Too Short: At least 2 characters</p>
+                          <p *ngIf='!valid && price.errors.maxlength && price.dirty'>Too Long: No more than 200 characters</p>
+                          <p *ngIf='!valid && price.errors.required && price.dirty'>Required : price</p>
+                        </div>
+                </div>
+              </div>
+          </div>
+
+          <div class="form-group">
+              <label for="location" class="cols-sm-2 control-label">location:</label>
+              <div class="cols-sm-10">
+                  <div class="input-group">
+                      <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+
+                        <input
+                          required
+                          type="text"
+                          name="location"
+                          minlength="2"
+                          maxlength="24"
+                          [(ngModel)]="createBike.location"
+                          #location="ngModel"
+                        />
+
+                      <div *ngIf = "location.errors">      
+                        <p *ngIf='!valid && location.errors.minlength && location.dirty'>Too Short: At least 2 characters</p>
+                        <p *ngIf='!valid && location.errors.maxlength && location.dirty'>Too Long: No more than 200 characters</p>
+                        <p *ngIf='!valid && location.errors.required && location.dirty'>Required : location</p>
+                      </div>
+              </div>
+            </div>
+        </div>
+           
+              
+    
+              <!-- <input > does not have a closing tag -->
+                <button *ngIf="!createForm.valid">Please check your input entries</button>
+                <input *ngIf='createForm.valid' (click)='create()' [disabled]="createForm.invalid" type="submit"  value="Create" class="btn btn-primary btn-lg login-button">
+    
+              </fieldset>
+              </form>
+    
+        </div>
+      </div>
+    </div>
+    
+      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <!-- Include all compiled plugins (below), or include individual files as needed -->
+      <script src="js/bootstrap.min.js"></script>
+    

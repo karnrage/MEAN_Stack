@@ -38,6 +38,11 @@ module.exports = function(app) {
         userController.logout(req,res);
         
     })
+    app.post("/api/newBike", function (req,res){
+        console.log("where?: here in Mongoose: newBike route - app.post");
+        bikeController.newBike(req,res);
+        
+    })
     // app.post( "/deletePlayer", function (req, res) {
     //     console.log("HERE IN MongoPlayers delete- app.post");
     //     playerController.deletePlayer(req, res);

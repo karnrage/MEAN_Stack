@@ -14,6 +14,31 @@ function createError(_path, _message) {
 }
 
 module.exports = {
+
+    newBike: function(request, response){
+        let possibleSession = request.session;
+        if (possibleSession.id){
+            var brandNewbike = new Bike(request.body)
+            //currentUser pulled from login fxn. Need same name
+            brandNewbike._user = possibleSession.currentUser
+            brandNewbike.save(function(error){
+                if(error){
+                    console.log("--------error saving---------")
+                    return response.json(error)
+                }
+                else {
+                    console.log("====SAVED BIKE====")
+                    request.session.bike = brandNewbike
+                    return response.json(brandNewbike)               
+                }
+            }
+        )}
+        else{
+            console.log("------TO CREATE A RELATIONSHIP, NEED A SIGNED IN USER======")
+            return response.json({ error : "no one is logged in"})
+        }
+        
+    },
     // showPlayers: function (req, res) {
     //     // var players = Player.find({}).sort('-createdAt').exec(function (err, players) { DO NOT NEED TO SET EQUAL TO VARIABLE, BEING CALLED IN (err, players)
     //     Player.find({}).sort('-createdAt').exec(function (err, players) {

@@ -36,7 +36,7 @@ var BikeSchema = new mongoose.Schema({
         trim: true,
         alias: "Price"
     },
-    _user: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}]
+    _user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
 },
 { timestamps: true }
 );

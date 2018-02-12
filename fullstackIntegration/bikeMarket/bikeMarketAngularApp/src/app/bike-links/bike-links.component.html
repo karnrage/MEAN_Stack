@@ -8,8 +8,9 @@
           <div >
             <h2 class="text-white">All Cycles</h2>
             <div class="row p-3">
-              <a [routerLink]="['browse/']" class="text-light">Browse</a>
-              <a [routerLink]="['listings/']" class="text-light">My Listings</a>
+              <!-- leading slash below supercedes anything else before the address bar -->
+              <a [routerLink]="['/browse']" class="text-light">Browse</a>
+              <a [routerLink]="['/listings']" class="text-light">My Listings</a>
               <a (click)="logout()"  class="text-light">Log Off</a>
           <!-- [routerLink] will stack on top of previous existing URL. example. if previous is browse then above would be browse/whatever -->
             </div>

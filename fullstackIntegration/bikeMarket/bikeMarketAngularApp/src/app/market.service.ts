@@ -74,6 +74,13 @@ export class MarketService {
   }
         // .map(response => response.json())
         // .toPromise()
+
+  newBike(bike:Bike){
+    console.log("where?: service: createBike fxn")
+    return this._http.post('/api/newBike', bike)
+    .map(response => response.json())
+    .toPromise()
+  }
         
  
 
