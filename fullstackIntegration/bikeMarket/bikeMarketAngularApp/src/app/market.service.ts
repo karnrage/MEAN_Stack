@@ -99,4 +99,11 @@ export class MarketService {
     //         this.currentData("=========ERROR here=======fix it!")
     //     )
   }
+
+  edit(myBike){
+    console.log("where?: service: edit fxn")
+    return this._http.post('/api/edit')
+    .map(response => response.json())
+    .toPromise()
+  }
 }

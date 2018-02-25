@@ -48,6 +48,11 @@ module.exports = function(app) {
         bikeController.showBike(req,res);
         
     })
+    app.post("/api/edit", function (req,res){
+        console.log("where?: here in Mongoose: edit route - app.post");
+        bikeController.editBike(req,res);
+        
+    })
     
     // app.post( "/deletePlayer", function (req, res) {
     //     console.log("HERE IN MongoPlayers delete- app.post");

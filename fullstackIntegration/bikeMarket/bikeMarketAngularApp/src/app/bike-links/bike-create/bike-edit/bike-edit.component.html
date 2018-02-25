@@ -1,3 +1,27 @@
 <p>
   bike-edit works!
 </p>
+<div >
+  <div>
+    <table class="table table-striped">
+        <tr>
+          
+          
+          <th>Edit/Delete Listings</th>        
+        </tr>
+        <tr *ngFor="let item of showBike">
+          <form (submit)='edit(item)'>
+
+
+          <td>Title:<input type='text' name='title' placeholder= {{item.title}} [(ngModel)]='item.title'></td>
+          <td>Price:{{item.price}}</td>
+          <td>Desc:{{item.desc}}</td>
+          <td>location:{{item.location}}</td>
+          <td>createdBy:{{item.createdBy}}</td>
+          
+          <p><input type='submit' value='Update' ></p>
+          </form>
+        </tr>      
+    </table>
+  </div>
+</div>

@@ -63,6 +63,19 @@ module.exports = {
         }
         
     },
+    editBike:function(request, response){
+        console.log('-----------INSIDE MONGOOSE: editBike FXN---------')
+        Bike.find({_id:req.body.id}, function (err, bike) {
+            console.log(req.body.id);
+            console.log(bike);
+            console.log("where?:here in bike controller:editBike", req.body);
+            bike.title = request.body.title,
+            bike.desc = request.body.desc,
+            bike.location = request.body.location,
+            bike.price = request.body.price,
+        } )
+        .then ( (bike) )
+    }
     // showPlayers: function (req, res) {
     //     // var players = Player.find({}).sort('-createdAt').exec(function (err, players) { DO NOT NEED TO SET EQUAL TO VARIABLE, BEING CALLED IN (err, players)
     //     Player.find({}).sort('-createdAt').exec(function (err, players) {
