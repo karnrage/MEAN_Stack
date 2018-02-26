@@ -10,16 +10,21 @@
           <th>Edit/Delete Listings</th>        
         </tr>
         <tr *ngFor="let item of showBike">
-          <form (submit)='edit(item)'>
+          <form (submit)='editBike(item); editForm.reset()' #editForm="ngForm">
 
 
-          <td>Title:<input type='text' name='title' placeholder= {{item.title}} [(ngModel)]='item.title'></td>
-          <td>Price:{{item.price}}</td>
-          <td>Desc:{{item.desc}}</td>
-          <td>location:{{item.location}}</td>
-          <td>createdBy:{{item.createdBy}}</td>
+          <!-- <td>Title:<input type='text' name='title' placeholder= {{item.title}} [(ngModel)]='title'></td>
+          <td>Price:<input type='text' name='price' placeholder= {{item.price}} [(ngModel)]='price'></td>
+          <td>Desc:<input type='text' name='desc' placeholder= {{item.desc}} [(ngModel)]='desc'></td>
+          <td>location:<input type='text' name='location' placeholder= {{item.location}} [(ngModel)]='location'></td> -->
+          Problem is that all text boxes update with new data, only want one
+        
+          <td>Title:<input type='text' name='title' placeholder= {{item.title}}> </td>
+          <td>Price:<input type='text' name='price' placeholder= {{item.price}}> </td>
+          <td>Desc:<input type='text' name='desc' placeholder= {{item.desc}}> </td>
+          <td>location:<input type='text' name='location' placeholder= {{item.location}}> </td>
           
-          <p><input type='submit' value='Update' ></p>
+          <p><input (click)='editBike' type="submit" value='Update' ></p>
           </form>
         </tr>      
     </table>

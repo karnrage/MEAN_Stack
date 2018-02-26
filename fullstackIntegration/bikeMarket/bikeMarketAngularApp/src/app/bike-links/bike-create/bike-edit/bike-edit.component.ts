@@ -31,7 +31,7 @@ export class BikeEditComponent implements OnInit {
     console.log("where?:inside bike-edit: edit fxn")
     this._marketService.edit(myBike)
     .then(response => this.ngOnInit())
-    .then(repsonse => {
+    .then(response => {
       console.log("where?:inside bike-edit comp: edit fxn: after reponse")
       if(response.error){
         console.log("error received an error from mongoose")

@@ -65,16 +65,22 @@ module.exports = {
     },
     editBike:function(request, response){
         console.log('-----------INSIDE MONGOOSE: editBike FXN---------')
-        Bike.find({_id:req.body.id}, function (err, bike) {
-            console.log(req.body.id);
+        Bike.find({_id:request.body.id}, function (err, bike) {
+            console.log(request.body.id);
             console.log(bike);
-            console.log("where?:here in bike controller:editBike", req.body);
+            console.log("where?:here in bike controller:editBike", request.body);
             bike.title = request.body.title,
+            console.log(bike.title)
             bike.desc = request.body.desc,
             bike.location = request.body.location,
             bike.price = request.body.price,
+            bike.save(function (err){
+                if (err){
+                    console.error("error in editbike save");
+                }
+            })
         } )
-        .then ( (bike) )
+        
     }
     // showPlayers: function (req, res) {
     //     // var players = Player.find({}).sort('-createdAt').exec(function (err, players) { DO NOT NEED TO SET EQUAL TO VARIABLE, BEING CALLED IN (err, players)
