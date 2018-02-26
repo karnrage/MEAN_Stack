@@ -49,6 +49,7 @@ module.exports = function(app) {
         
     })
     app.post("/api/edit", function (req,res){
+        console.log(req.body)
         console.log("where?: here in Mongoose: edit route - app.post");
         bikeController.editBike(req,res);
         

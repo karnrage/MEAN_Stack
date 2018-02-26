@@ -101,11 +101,15 @@ export class MarketService {
   }
 
   edit(myBike){
-    console.log(myBike)
     console.log("where?: service: edit fxn")
+    console.log(myBike)
+    console.log("inside service: edit: after myBike console.log")
     return this._http.post('/api/edit', myBike)
-    // above: made correction with error:"ERROR in src/app/market.service.ts(105,12): error TS2554: Expected 2-3 arguments, but got 1." I forgot to pass in the data to the back end
     .map(response => response.json())
     .toPromise()
   }
 }
+// above: made correction with error:"ERROR in src/app/market.service.ts(105,12): error TS2554: Expected 2-3 arguments, but got 1." I forgot to pass in the data to the back end
+
+// IMPORTANT!!! DO NOT COMMENT BETWEEN .MAP OR .TOPROMISE
+// DO NOT COMMENT BETWEEN FUNCTION CHAINING

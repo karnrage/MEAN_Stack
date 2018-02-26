@@ -31,6 +31,7 @@ export class BikeEditComponent implements OnInit {
   editBike(data){
       
     console.log("where?:inside bike-edit: edit fxn")
+    console.log(data)
     this._marketService.edit(data)
     // .then(response => this.ngOnInit()) even possible?
     .then(response => this.myBike = response)
