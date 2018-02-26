@@ -101,8 +101,10 @@ export class MarketService {
   }
 
   edit(myBike){
+    console.log(myBike)
     console.log("where?: service: edit fxn")
-    return this._http.post('/api/edit')
+    return this._http.post('/api/edit', myBike)
+    // above: made correction with error:"ERROR in src/app/market.service.ts(105,12): error TS2554: Expected 2-3 arguments, but got 1." I forgot to pass in the data to the back end
     .map(response => response.json())
     .toPromise()
   }

@@ -27,10 +27,13 @@ export class BikeEditComponent implements OnInit {
     return  this._marketService.showBike().then(response => this.showBike = response)
   }
 
-  editBike(myBike){
+  // editBike(myBike){ this doesn't take the $event data object from front?
+  editBike(data){
+      
     console.log("where?:inside bike-edit: edit fxn")
-    this._marketService.edit(myBike)
-    .then(response => this.ngOnInit())
+    this._marketService.edit(data)
+    // .then(response => this.ngOnInit()) even possible?
+    .then(response => this.myBike = response)
     .then(response => {
       console.log("where?:inside bike-edit comp: edit fxn: after reponse")
       if(response.error){

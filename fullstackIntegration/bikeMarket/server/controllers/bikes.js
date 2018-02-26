@@ -65,7 +65,12 @@ module.exports = {
     },
     editBike:function(request, response){
         console.log('-----------INSIDE MONGOOSE: editBike FXN---------')
-        Bike.find({_id:request.body.id}, function (err, bike) {
+        console.log(request.body._id)
+        // Bike.find({_id:request.body.id}, function (err, bike) {
+            // below maybe _id:myBike._id? 
+        Bike.findOne({_id:request.body.id}, { new: true }, function (err, bike) {                
+            // above has more control over changes. If findOneAndUpdate then less changes can be made, and saving is auto
+            // {new: true} is supposed to return the updated document
             console.log(request.body.id);
             console.log(bike);
             console.log("where?:here in bike controller:editBike", request.body);
@@ -74,9 +79,14 @@ module.exports = {
             bike.desc = request.body.desc,
             bike.location = request.body.location,
             bike.price = request.body.price,
-            bike.save(function (err){
-                if (err){
+            // below: not a fxn: Bike.save
+            Bike.save(function (error){
+                if (error){
                     console.error("error in editbike save");
+                    return response.json(error)
+                }
+                else{
+                    return response.json("save success -kk")
                 }
             })
         } )

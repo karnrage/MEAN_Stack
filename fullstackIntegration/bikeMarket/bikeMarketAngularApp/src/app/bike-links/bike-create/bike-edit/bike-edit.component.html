@@ -9,22 +9,37 @@
           
           <th>Edit/Delete Listings</th>        
         </tr>
+        <!-- <tr *ngFor="let item of showBike; let i = index; trackBy:trackByIndex"> -->
         <tr *ngFor="let item of showBike">
-          <form (submit)='editBike(item); editForm.reset()' #editForm="ngForm">
-
-
-          <!-- <td>Title:<input type='text' name='title' placeholder= {{item.title}} [(ngModel)]='title'></td>
-          <td>Price:<input type='text' name='price' placeholder= {{item.price}} [(ngModel)]='price'></td>
-          <td>Desc:<input type='text' name='desc' placeholder= {{item.desc}} [(ngModel)]='desc'></td>
-          <td>location:<input type='text' name='location' placeholder= {{item.location}} [(ngModel)]='location'></td> -->
-          Problem is that all text boxes update with new data, only want one
+                <form (submit)='editBike(item)' #editForm="ngForm">
+                  <!-- ; editForm.reset() removed this from above -->
+          
+          <td>
+            <!-- IMPORTANT: data is sent to form when form is live
+            once user clicks update the data is cleared. Need to use below input type of hidden to capture and send data 
+            to the rear end -->
+            <!-- <input type="hidden" name="_id" value="{{item._id}}">
+            Title:<input type='text' name='title' placeholder= {{item.title}} [(ngModel)]='title[i]'>
+          </td>
+          <td>Price:<input type='text' name='price' placeholder= {{item.price}} [(ngModel)]='price[i]'></td>
+          <td>Desc:<input type='text' name='desc' placeholder= {{item.desc}} [(ngModel)]='desc[i]'></td>
+          <td>location:<input type='text' name='location' placeholder= {{item.location}} [(ngModel)]='location[i]'></td>
+           -->
+          <input type="hidden" name="_id" value="{{item._id}}">
+          Title:<input type='text' name='item.title' placeholder= title [(ngModel)]='item.title'>
+           </td>
+          <td>Price:<input type='text' name='item.price' placeholder= price [(ngModel)]='item.price'></td>
+          <td>Desc:<input type='text' name='item.desc' placeholder= desc [(ngModel)]='item.desc'></td>
+          <td>location:<input type='text' name='item.location' placeholder= location [(ngModel)]='item.location'></td>
+          <!-- Problem is that all text boxes update with new data, only want one -->
         
-          <td>Title:<input type='text' name='title' placeholder= {{item.title}}> </td>
+          <!-- <td>Title:<input type='text' name='title' placeholder= {{item.title}}> </td>
           <td>Price:<input type='text' name='price' placeholder= {{item.price}}> </td>
           <td>Desc:<input type='text' name='desc' placeholder= {{item.desc}}> </td>
-          <td>location:<input type='text' name='location' placeholder= {{item.location}}> </td>
+          <td>location:<input type='text' name='location' placeholder= {{item.location}}> </td> -->
           
-          <p><input (click)='editBike' type="submit" value='Update' ></p>
+          <p><input (click)='editBike($event)' type="submit" value='Update' ></p>
+          <!-- IMPORTANT: *possible* solution is to use ($event) to pass in data on which bike! p= -->
           </form>
         </tr>      
     </table>

@@ -18,7 +18,7 @@ export class AppComponent {
   constructor(private _marketService: MarketService, private _router: Router) { }
 
   ngOnInit() {
-    console.log(this.logged)
+    console.log("Is a user logged in? " + this.logged)
   this._marketService.userObserver.subscribe(
     dataTemp => {
       this.logged = dataTemp;
