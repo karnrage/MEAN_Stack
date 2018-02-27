@@ -66,34 +66,67 @@ module.exports = {
     editBike:function(request, response){
         console.log('-----------INSIDE MONGOOSE: editBike FXN---------')
         // console.log(request)
-        console.log(request.body)
+        // console.log(request.body)
         console.log(request.body._id)
+        console.log("NEW CONSOLE LOG=============", request.body.title)
+        
         // Bike.find({_id:request.body.id}, function (err, bike) {
             // below maybe _id:myBike._id? 
-        Bike.findOne({_id: request.body._id}, function (err, bike) {                
-            // above has more control over changes. If findOneAndUpdate then less changes can be made, and saving is auto
-            // {new: true} is supposed to return the updated document
-            console.log(bike);
-           
-            console.log("where?:here in bike controller:editBike", request.body);
-            bike.title = request.body.title,
-            console.log(bike.title)
-            bike.desc = request.body.desc,
-            bike.location = request.body.location,
-            bike.price = request.body.price,
-            // below: not a fxn: Bike.save
-            Bike.save(function (error){
-                if (error){
-                    console.error("error in editbike save");
-                    return response.json(error)
-                }
-                else{
-                    return response.json("save success -kk")
-                }
-            })
+        Bike.find({_id: request.body._id}, function (err, bike) {
+            
+            if (err){
+                console.log("===========new code block to handle parent err fxn=====");
+                return response.json(err)
+            }
+            else {
+                
+                // above has more control over changes. If findOneAndUpdate then less changes can be made, and saving is auto
+                // {new: true} is supposed to return the updated document
+                console.log(bike);
+               
+                // console.log("where?:here in bike controller:editBike", request.body);
+                
+                bike.title = request.body.title;
+                bike.desc = request.body.desc;
+                bike.location = request.body.location;
+                bike.price = request.body.price;
+                // below: not a fxn: Bike.save
+                bike.save(function (error){
+                    if (error){
+                        console.error("error in editbike save");
+                        return response.json(error)
+                    }
+                    else{
+                        return response.json("save success -kk")
+                    }
+                })
+            }
         } )
         
     }
+
+    // Syntax issue below
+    // bike.title = request.body.title,
+    // bike.desc = request.body.desc,
+    // bike.location = request.body.location,
+    // bike.price = request.body.price
+    // Right below
+    // bike.title = request.body.title;
+    // bike.desc = request.body.desc;
+    // bike.location = request.body.location;
+    // bike.price = request.body.price;
+
+
+
+
+
+
+
+
+
+
+
+
     // showPlayers: function (req, res) {
     //     // var players = Player.find({}).sort('-createdAt').exec(function (err, players) { DO NOT NEED TO SET EQUAL TO VARIABLE, BEING CALLED IN (err, players)
     //     Player.find({}).sort('-createdAt').exec(function (err, players) {

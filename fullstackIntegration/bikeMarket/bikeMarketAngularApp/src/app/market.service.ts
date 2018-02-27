@@ -102,7 +102,7 @@ export class MarketService {
 
   edit(myBike){
     console.log("where?: service: edit fxn")
-    console.log(myBike)
+    console.log("Testing!: in service: edit: ", myBike)
     console.log("inside service: edit: after myBike console.log")
     return this._http.post('/api/edit', myBike)
     .map(response => response.json())
