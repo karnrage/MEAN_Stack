@@ -80,7 +80,7 @@ module.exports = {
             } else {
                 if (req.params.game === 'g1'){
                     // CHANGED BELOW TO state, STILL NO CHANGE
-                    Player.update(player[0], {g1 : req.params.state}, function(err){
+                    {Player.update(player[0], {g1 : req.params.state}}, function(err){
                         console.log("THIS IS THE NEW STATE");
                         console.log(req.params.state);
                         console.log(player[0]);

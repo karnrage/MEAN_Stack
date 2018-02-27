@@ -37,7 +37,9 @@
            
           <p><input (submit)='editBike($event)' type="submit" value='Update' ></p>
           <!-- IMPORTANT: *possible* solution is to use ($event) to pass in data on which bike! p= -->
-          </form>
+          <!-- IMPORTANT: do not do (click)='editbike($event)....when in form it is submit only. Changed and now double submission stopped!-->
+  
+        </form>
         </tr>      
     </table>
   </div>
