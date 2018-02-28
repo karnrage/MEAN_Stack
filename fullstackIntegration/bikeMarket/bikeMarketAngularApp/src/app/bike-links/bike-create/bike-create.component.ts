@@ -39,6 +39,11 @@ createBike: Bike = new Bike();
       })
       .catch(error => console.log(error))
   }
-
+  
+  logout(){
+    console.log("where?: bike-edit component: logout fxn")
+    this._marketService.logoutinService();
+    this._router.navigateByUrl('/');
+  }
   // BELOW:CLOSING BRACE FOR WHOLE EXPORT CLASS
 }

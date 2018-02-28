@@ -1,12 +1,13 @@
-<p>
+<!-- <p>
   bike-items works!
 </p>
-
+ -->
 
  <!-- do ngFor and ngif  for bikes........if bike = current user -->
 
  <div >
     <div>
+      
       <table class="table table-striped">
           <tr>
             
@@ -15,17 +16,14 @@
           </tr>
           <tr *ngFor="let item of showBike">
             <td>Title:{{item.title}}</td>
-            <td>Price:{{item.price}}</td>
+            <td>Price:{{item.price | currency:'USD':true}}</td>
             <td>Desc:{{item.desc}}</td>
             <td>location:{{item.location}}</td>
-            <td>createdBy:{{item.createdBy}}</td>
-            <!-- <td>{{item.position}}</td> -->
-            <!-- <td> -->
-                <!-- <button (click)="onClick()" [ngClass]="{'on' :btn btn-danger, 'off' :btn btn-default}"">Playering</button> -->
-                <!-- <button (click)= "playing(item)" class="btn btn-success">Playering</button>
-                <button (click)="notPlaying(item)" class="btn btn-danger">not Playering</button>
-                <button (click)="undecided(item)" class="btn btn-warning">undecided</button> -->
-
+            <td>createdBy:{{item._user._id}}|||{{user.sessionUser._id}}</td>
+            
+            <button *ngIf='item._user._id === user._id' type="button" class="btn btn-danger"(click)="erase(item)">Erase</button>
+            <button *ngIf='item._user._id != user._id' type="button" class="btn btn-primary"(click)="contact(item)">Contact</button>
+            
           </tr>      
       </table>
     </div>

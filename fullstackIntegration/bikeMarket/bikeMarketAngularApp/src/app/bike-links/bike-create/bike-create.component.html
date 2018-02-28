@@ -1,6 +1,6 @@
-<p>
+<!-- <p>
   bike-create works!
-</p>
+</p> -->
 
 <div class="container">
   <div class="row main">
@@ -65,7 +65,9 @@
                       <div class="input-group">
                           <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
     
-                            <input
+                            <textarea
+                              cols="50"
+                              rows="10"
                               required
                               type="text"
                               name="description"
@@ -73,7 +75,8 @@
                               maxlength="200"
                               [(ngModel)]="createBike.desc"
                               #desc="ngModel"
-                            />
+                            >
+                           </textarea>
     
                           <div *ngIf = "desc.errors">      
                             <p *ngIf='!valid && desc.errors.minlength && desc.dirty'>Too Short: At least 2 characters</p>
@@ -103,7 +106,7 @@
   
                         <div *ngIf = "price.errors">      
                           <p *ngIf='!valid && price.errors.minlength && price.dirty'>Too Short: At least 2 characters</p>
-                          <p *ngIf='!valid && price.errors.maxlength && price.dirty'>Too Long: No more than 200 characters</p>
+                          <p *ngIf='!valid && price.errors.maxlength && price.dirty'>Too Long: No more than 24 characters</p>
                           <p *ngIf='!valid && price.errors.required && price.dirty'>Required : price</p>
                         </div>
                 </div>
@@ -128,7 +131,7 @@
 
                       <div *ngIf = "location.errors">      
                         <p *ngIf='!valid && location.errors.minlength && location.dirty'>Too Short: At least 2 characters</p>
-                        <p *ngIf='!valid && location.errors.maxlength && location.dirty'>Too Long: No more than 200 characters</p>
+                        <p *ngIf='!valid && location.errors.maxlength && location.dirty'>Too Long: No more than 24 characters</p>
                         <p *ngIf='!valid && location.errors.required && location.dirty'>Required : location</p>
                       </div>
               </div>

@@ -4,14 +4,15 @@ mongoose.Promise = global.Promise;
 // why? above
 
 var BikeSchema = new mongoose.Schema({
-    createdBy: { 
-        type:String,
-        // required: true,
-        // minlength: 2,
-        maxlength: 30,
-        trim: true,
-        alias: "Created By"
-    },
+    _user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+    // createdBy: { 
+    //     type:String,
+    //     // required: true,
+    //     // minlength: 2,
+    //     maxlength: 30,
+    //     trim: true,
+    //     alias: "Created By"
+    // },
     title: { 
         type:String,
         required: true,
@@ -44,7 +45,7 @@ var BikeSchema = new mongoose.Schema({
         trim: true,
         alias: "Price"
     },
-    _user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
+    // _user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
 },
 { timestamps: true }
 );

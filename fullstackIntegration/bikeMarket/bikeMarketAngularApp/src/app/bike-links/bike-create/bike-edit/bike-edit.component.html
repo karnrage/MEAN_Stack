@@ -1,6 +1,6 @@
-<p>
+<!-- <p>
   bike-edit works!
-</p>
+</p> -->
 <div >
   <div>
     <table class="table table-striped">
@@ -35,7 +35,7 @@
           <td>location:<input type='text' name='location' placeholder="{{item.location}}" [(ngModel)]='item.location' #location="ngModel"></td>
         
            <p>Edit works without hidden input......why?<p>
-          <p><input (submit)='editBike($event)' type="submit" value='Update' ></p>
+          <p><input class="btn btn-primary" (submit)='editBike($event)' type="submit" value='Update' ></p>
           <!-- IMPORTANT: *possible* solution is to use ($event) to pass in data on which bike! p= -->
           <!-- IMPORTANT: do not do (click)='editbike($event)....when in form it is submit only. Changed and now double submission stopped!-->
           <button type="button" class="btn btn-danger"(click)="eraseBike(item)">Erase</button>

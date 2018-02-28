@@ -67,4 +67,5 @@ export class BikeEditComponent implements OnInit {
 
         })    
   }
+
 }

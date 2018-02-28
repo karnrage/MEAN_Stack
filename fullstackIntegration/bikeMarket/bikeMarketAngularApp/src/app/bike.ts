@@ -3,7 +3,7 @@ import { User } from './user';
 export class Bike {
     constructor(
       public id: number = null,
-      public createdBy: User = null,
+      public _user: string = "",
       public title: string = "",
       public desc: string = "",
       public price: string = "",

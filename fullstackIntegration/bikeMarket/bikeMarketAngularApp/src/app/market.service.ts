@@ -21,7 +21,7 @@ export class MarketService {
 
   constructor(private _http: Http) { }
 
-  currentData(newData:any): void{
+ updateData(newData:any): void{
     // this.bikeObserver.next(newData);
     this.userObserverData.next(newData);
   }
@@ -47,10 +47,12 @@ export class MarketService {
         .then(response => {
             if ( "sessionUser" in response){
               this.userSet(true)
-              resolve(response);
+              this.updateData(response)
+              console.log("==================here in service",response)
+              return resolve(response);
             }
             else {
-              reject(response);
+              return reject(response);
             }
           });
       }
@@ -66,11 +68,12 @@ export class MarketService {
       .subscribe(
         response =>
         {
-        this.userSet(false) 
+        this.userSet(false)
+        this.updateData(null)
         // this.currentData(response.json())
         console.log("======inside logoutinService: subscribe fxn after userset(false)====")
         },
-        error => this.currentData("=========ERROR: WHERE? logoutinService .subscribe====")
+        error => this.updateData("=========ERROR: WHERE? logoutinService .subscribe====")
       )
   }
         // .map(response => response.json())

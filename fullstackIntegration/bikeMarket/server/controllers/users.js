@@ -125,7 +125,8 @@ module.exports = {
                     console.log('LOG IN SUCCESS')
                     request.session.currentUser = DBreply
                     // response.json({'id': DBreply._id, 'firstName': DBreply.firstName, 'email': DBreply.email})  
-                    response.json({'sessionUser': DBreply})
+                    console.log("===========reply from dbase", DBreply)
+                    return response.json({'sessionUser': DBreply})
                 } else {
                     console.log("password mismatch");
                     var mismatch = {'errors': "Users password/email do not match", 'loginAgain': true}
