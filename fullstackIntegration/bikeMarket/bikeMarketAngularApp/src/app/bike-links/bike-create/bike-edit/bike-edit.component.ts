@@ -32,11 +32,11 @@ export class BikeEditComponent implements OnInit {
       
     console.log("where?:inside bike-edit: edit fxn")
     console.log(data)
-    this._marketService.edit(data)
     // .then(response => this.ngOnInit()) even possible?
+    this._marketService.edit(data)
     .then(response => this.myBike = response)
     .then(response => {
-      console.log("where?:inside bike-edit comp: edit fxn: after reponse")
+      console.log("where?:inside bike-edit comp: edit fxn: after 2nd reponse")
       if(response.error){
         console.log("error received an error from mongoose")
         return this._router.navigateByUrl('/browse')
@@ -53,6 +53,18 @@ export class BikeEditComponent implements OnInit {
     console.log("where?:inside bike-edit component: erase fxn")
     console.log(eraseData)
     this._marketService.erase(eraseData)
-    
+        .then(response =>{ 
+          console.log("where?:inside bike-edit comp: erase fxn: after 1st reponse")
+          if(response.error){
+            console.log("error; received an error from mongoose")
+            return this._router.navigateByUrl('/browse')
+          }
+          else{
+            console.log("=============RESPONSE=========:", response)
+            this._marketService.showBike().then(response => this.showBike = response)
+            this._router.navigateByUrl('listings')
+          }
+
+        })    
   }
 }

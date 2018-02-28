@@ -124,7 +124,7 @@ module.exports = {
             }
         })
     },        
-}
+
 
     // Syntax issue below
     // bike.title = request.body.title,
