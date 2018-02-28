@@ -48,4 +48,11 @@ export class BikeEditComponent implements OnInit {
     })
     .catch(error => console.log(error))
   }
+
+  eraseBike(eraseData){
+    console.log("where?:inside bike-edit component: erase fxn")
+    console.log(eraseData)
+    this._marketService.erase(eraseData)
+    
+  }
 }

@@ -37,21 +37,27 @@ module.exports = function(app) {
         console.log("where?: here in Mongoose: logout user route - app.get");
         userController.logout(req,res);
         
-    })
+    });
     app.post("/api/newBike", function (req,res){
         console.log("where?: here in Mongoose: newBike route - app.post");
         bikeController.newBike(req,res);
         
-    })
+    });
     app.get("/api/showAll", function (req,res){
         console.log("where?: here in Mongoose: showAll route - app.get");
         bikeController.showBike(req,res);
         
-    })
+    });
     app.post("/api/edit", function (req,res){
-        console.log("=======WHERE AM I SHOWING========",req.body)
+        console.log("=======WHERE AM I SHOWING========", req.body)
         console.log("where?: here in Mongoose: edit route - app.post");
         bikeController.editBike(req,res);
+        
+    });
+    app.post("/api/erase", function (req,res){
+        console.log("=======WHERE AM I SHOWING: MONGOOSE ========", req.body)
+        console.log("where?: here in Mongoose: edit route - app.post");
+        bikeController.eraseBike(req,res);
         
     })
     

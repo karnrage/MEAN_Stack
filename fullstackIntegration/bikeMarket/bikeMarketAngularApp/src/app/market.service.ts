@@ -108,6 +108,17 @@ export class MarketService {
     .map(response => response.json())
     .toPromise()
   }
+
+  // input parameter ok?
+  erase(eraseData:Bike){
+    console.log("where?:inside bike-edit component: erase fxn")
+    console.log("console logging erase data:", eraseData)
+    return this._http.post('/api/erase', eraseData)
+    .map(response => response.json())
+    .toPromise()
+    
+  }
+
 }
 // above: made correction with error:"ERROR in src/app/market.service.ts(105,12): error TS2554: Expected 2-3 arguments, but got 1." I forgot to pass in the data to the back end
 

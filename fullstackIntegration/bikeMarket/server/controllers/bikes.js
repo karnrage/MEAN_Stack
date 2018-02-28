@@ -110,7 +110,21 @@ module.exports = {
             }
         } )
         
-    }
+    },
+    eraseBike:function(request, response){
+        console.log('-----------INSIDE MONGOOSE: eraseBike FXN---------')
+        console.log(request.body)
+        Bike.remove({ _id: request.body._id }, function (error) {
+            if (error) {
+                console.log('===ERROR DELETING DOCUMENT===')
+                return response.json(error)
+            } else {
+                console.log('===SUCCESSFULLY DELETED DOCUMENT===')
+                return response.json({ deleted: true })
+            }
+        })
+    },        
+}
 
     // Syntax issue below
     // bike.title = request.body.title,
