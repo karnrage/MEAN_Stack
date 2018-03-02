@@ -15,6 +15,7 @@ export class MarketService {
   userObserver: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   userObserverData: BehaviorSubject<any[]> = new BehaviorSubject([]);
   
+  // new data is called lightswitch, and is being placed inthe userObserver Observable
   userSet(lightswitch){
     this.userObserver.next(lightswitch);
   }

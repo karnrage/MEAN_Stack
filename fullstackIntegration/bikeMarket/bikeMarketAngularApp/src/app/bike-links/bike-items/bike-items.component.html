@@ -24,6 +24,7 @@
             <button *ngIf='item._user._id === user.sessionUser._id' type="button" class="btn btn-danger"(click)="erase(item)">Erase</button>
             <button *ngIf='item._user._id != user.sessionUser._id' type="button" class="btn btn-primary"(click)="contact(item)">Contact</button>
             
+
           </tr>      
       </table>
     </div>

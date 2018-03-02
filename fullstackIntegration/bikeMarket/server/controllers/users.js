@@ -96,7 +96,7 @@ module.exports = {
                     // console.log(req.body);
                     // res.json({'loggedinUserId': req.session.user, 'loggedinUserLastName': req.session.last, 'loggedinUserFirstName':req.session.first, 'loggedinUserEmail': req.session.email});
                     // res.json({'Id': req.session.user, 'LastName': req.session.last, 'FirstName':req.session.first, 'UserEmail': req.session.email});
-                    response.json({'registerSessionUser': brandNewUser})  
+                    response.json({'sessionUser': brandNewUser})  
                     
                 }
             });

@@ -72,7 +72,7 @@
                               type="text"
                               name="description"
                               minlength="2"
-                              maxlength="200"
+                              maxlength="30"
                               [(ngModel)]="createBike.desc"
                               #desc="ngModel"
                             >
@@ -80,7 +80,7 @@
     
                           <div *ngIf = "desc.errors">      
                             <p *ngIf='!valid && desc.errors.minlength && desc.dirty'>Too Short: At least 2 characters</p>
-                            <p *ngIf='!valid && desc.errors.maxlength && desc.dirty'>Too Long: No more than 200 characters</p>
+                            <p *ngIf='!valid && desc.errors.maxlength && desc.dirty'>Too Long: No more than 30 characters</p>
                             <p *ngIf='!valid && desc.errors.required && desc.dirty'>Required : desc</p>
                           </div>
                   </div>
@@ -142,8 +142,9 @@
     
               <!-- <input > does not have a closing tag -->
                 <button *ngIf="!createForm.valid">Please check your input entries</button>
-                <input *ngIf='createForm.valid' (click)='create()' [disabled]="createForm.invalid" type="submit"  value="Create" class="btn btn-primary btn-lg login-button">
-    
+                <input *ngIf='createForm.valid'  [disabled]="createForm.invalid" type="submit"  value="Create" class="btn btn-primary btn-lg login-button">
+                <!-- <input *ngIf='createForm.valid' (click)='create()' [disabled]="createForm.invalid" type="submit"  value="Create" class="btn btn-primary btn-lg login-button"> -->
+                <!-- Above: In angular submit action/event is in the first <form> line, without angular it is usually in the <input> tag -->
               </fieldset>
               </form>
     

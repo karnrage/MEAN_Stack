@@ -27,9 +27,7 @@ showUser: User = new User();
       (user) => {
         console.log("========looking for user in items component", user)
         this.user = user
-        // for(let key of this.user){
-        //   console.log(key)
-        // }
+     
         let userKeys = Object.keys(user);
         console.log(userKeys)
       }
@@ -63,8 +61,12 @@ erase(itemData){
   
 }
 
-contact(item){
+contact(item) {
+  alert("First: " + item._user.first.toString() + ", Email:" + item._user.email.toString());
   
+  // console.log(item._user.first, item._user.email)
 }
+
+
 
 }

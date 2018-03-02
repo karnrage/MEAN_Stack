@@ -25,8 +25,9 @@ createBike: Bike = new Bike();
   create(){
     console.log("where?: bike-create component: create fxn")
     this._marketService.newBike(this.createBike)
-      .then(response => this.createBike = response)
-      .then(response =>{
+      // .then(response => this.createBike = response)
+      .then(response => {
+        this.createBike = response
         console.log("where?:inside bike-create comp: creat fxn: after reponse")
       if(response.error){
         console.log("error received an error from mongoose")

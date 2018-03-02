@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit {
   }
   // res.json({'loggedinUserId': req.session.user, 'loggedinUserLastName': req.session.last, 'loggedinUserFirstName':req.session.first, 'loggedinUserEmail': req.session.email});
   
-  register(event){
+  register(){
     console.log("where?: register component : register fxn")
     this._marketService.regUser(this.user)
     // IF .then is redlined, then make sure to put "return" before this._http.post in service
@@ -48,8 +48,10 @@ export class RegisterComponent implements OnInit {
             //  change below back to "/browse"
             //  var entryGranted = true;
             // do this : set in session. 
-            console.log(response.registerSessionUser);
-            this.registeredUser = response.registerSessionUser;
+            console.log(response.sessionUser);
+            this.registeredUser = response.sessionUser;
+            this._marketService.userSet(true);
+            this._marketService.updateData(response)
             // this.myLoginEvent.emit(this.registeredUser); 
              return this._router.navigateByUrl("/browse")
            }  
