@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, Input, EventEmitter} from '@angular/core';
 import { MarketService } from '../market.service';
 import { User } from '../user';
-// import { FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router'
 
 @Component({
@@ -14,7 +14,7 @@ export class Login2Component implements OnInit {
   returningUser = {};
   loggedIn = {};
 
-  ErrMessage: string ;
+  ErrMessage;
 
   //below: created to send info back to parent
   // @Output() myLoginEvent = new EventEmitter();
@@ -32,8 +32,8 @@ export class Login2Component implements OnInit {
          .then(response => {
   console.log("where?: inside login.component: login fxn: this._marketService.logUser(this.logUser)")
 
-           if (response.loginAgain){
-             this.ErrMessage = response.errors;
+           if ("loginAgain" in response){
+            //  this.ErrMessage = response.errors;
              return this._router.navigateByUrl('/')
            }
            else{
@@ -45,7 +45,11 @@ export class Login2Component implements OnInit {
             return this._router.navigateByUrl("browse")
            }  
          })
-          .catch(err => console.log(err))
+          .catch(err => {
+            this.ErrMessage = err;           
+            console.log(err)
+          })
+
     }
 // LAST BRACE BELOW
 }

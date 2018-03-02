@@ -6,12 +6,12 @@
   <div class="row main">
       <div class="main-login main-center">
         <div >
-          <h2 class="text-white">All Cycles</h2>
+          <h2 class="text-black">All Cycles</h2>
           <div class="row p-3">
             <!-- leading slash below supercedes anything else before the address bar -->
-            <a [routerLink]="['/browse']" class="text-light">Browse</a>
-            <a [routerLink]="['/listings']" class="text-light">My Listings</a>
-            <a (click)="logout()"  class="text-light">Log Off</a>
+            <a [routerLink]="['/browse']" class="text-dark">Browse</a>
+            <a [routerLink]="['/listings']" class="text-dark">My Listings</a>
+            <a (click)="logout()"  class="text-dark">Log Off</a>
         <!-- [routerLink] will stack on top of previous existing URL. example. if previous is browse then above would be browse/whatever -->
           </div>
         </div>

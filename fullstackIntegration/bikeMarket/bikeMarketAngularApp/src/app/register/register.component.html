@@ -72,7 +72,7 @@ to back end terminal
 
                           <input
                             required
-                            type="email"
+                            type="text"
                             name="email"
                             minlength="2"
                             maxlength="30"
@@ -107,6 +107,7 @@ to back end terminal
                         />
 
                       <div *ngIf = "password.errors">      
+      
                         <p *ngIf='!valid && password.errors.minlength && password.dirty'>Too Short: At least 2 characters</p>
                         <p *ngIf='!valid && password.errors.maxlength && password.dirty'>Too Long: No more than 24 characters</p>
                         <p *ngIf='!valid && password.errors.required && password.dirty'>Required : password</p>
@@ -133,7 +134,7 @@ to back end terminal
                 <div *ngIf = "confirmpassword.errors">      
                   <p *ngIf='!valid && confirmpassword.errors.minlength && confirmpassword.dirty'>Too Short: At least 2 characters</p>
                   <p *ngIf='!valid && confirmpassword.errors.maxlength && confirmpassword.dirty'>Too Long: No more than 24 characters</p>
-                  <p *ngIf='confirmpassword != password && confirmpassword.touched'>Required : password match</p>
+                  <p *ngIf='confirmpassword != password && confirmpassword'>Required : password match</p>
                 </div>
             </div>
           </div>
