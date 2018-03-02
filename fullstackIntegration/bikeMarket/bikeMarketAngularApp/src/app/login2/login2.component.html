@@ -1,14 +1,11 @@
-<p>
-  login2 works!
-</p>
 
-<p>
+<h6>
   This is MEAN. Once you hit service
   You NEED to switch from Chrome console
   to back end terminal.
   Chrome only good for angular front end
   Once in back need to look at window for console.logs
-</p>
+</h6>
 
 
 
@@ -17,7 +14,7 @@
           <div class="main-login main-center">
   
             <h1 style="text-align: left">Login</h1>
-  
+            <BR>{{ ErrMessage | json}}<BR>
             <form class="ng-untouched ng-pristine ng-invalid" (submit)="login(); logUserForm.reset()" #logUserForm="ngForm">
               <fieldset>
               
@@ -76,8 +73,8 @@
             
   
             <!-- <input > does not have a closing tag -->
-              <button *ngIf="!logUserForm.valid">Please check your input entries</button>
-              <input *ngIf='logUserForm.valid' (click)='login($event)' [disabled]="logUserForm.invalid" type="submit"  value="Login" class="btn btn-primary btn-lg login-button">
+              <!-- <button *ngIf="!logUserForm.valid">Please check your input entries</button> -->
+              <input   [disabled]="logUserForm.invalid" type="submit"  value="Login" class="btn btn-primary btn-lg login-button">
   
             </fieldset>
             </form>

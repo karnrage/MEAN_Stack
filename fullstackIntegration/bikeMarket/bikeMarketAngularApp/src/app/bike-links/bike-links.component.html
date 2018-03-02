@@ -4,12 +4,12 @@
     <div class="row main">
         <div class="main-login main-center">
           <div >
-            <h2 class="text-white">All Cycles</h2>
+            <h2 class="text-black">All Cycles</h2>
             <div class="row p-3">
               <!-- leading slash below supercedes anything else before the address bar -->
-              <a [routerLink]="['/browse']" class="text-light">Browse</a>
-              <a [routerLink]="['/listings']" class="text-light">My Listings</a>
-              <a (click)="logout()"  class="text-light">Log Off</a>
+              <a [routerLink]="['/browse']" class="text-dark">Browse |</a>
+              <a [routerLink]="['/listings']" class="text-dark">My Listings |</a>
+              <a (click)="logout()"  class="text-blue">Log Off</a>
           <!-- [routerLink] will stack on top of previous existing URL. example. if previous is browse then above would be browse/whatever -->
             </div>
           </div>
@@ -22,26 +22,7 @@
 </div>
 
 <app-bike-items></app-bike-items>
- <!-- do ngFor and ngif  for bikes........if bike = current user -->
 
- <!-- <div >
-    <div>
-      <table class="table table-striped">
-          <tr>
-            
-            
-            <th>Bikes</th>        
-          </tr>
-          <tr *ngFor="let item of showBike">
-            <td>Title:{{item.title}}</td>
-            <td>Price:{{item.price}}</td>
-            <td>Desc:{{item.desc}}</td>
-            <td>location:{{item.location}}</td>
-            <td>createdBy:{{item._user.first}}</td>
-          </tr>      
-      </table>
-    </div>
-  </div> -->
 
   
 

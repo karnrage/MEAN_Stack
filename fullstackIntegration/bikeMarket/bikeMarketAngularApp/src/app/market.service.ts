@@ -36,7 +36,15 @@ export class MarketService {
         
   }
 
-  logUserinService(user:User){
+  // logUserinService(user:User){
+  //   // need return with promises
+  //   console.log("where?: service : regUser fxn")
+  //   return this._http.post("/api/newUser", user)
+  //       .map(response => response.json())
+  //       .toPromise()
+        
+  // }
+logUserinService(user:User){
     // need return with promises
     console.log("where?: service :  logUser fxn")
     //must do as below. new Promise is saying I will do what you want me to do
@@ -60,6 +68,7 @@ export class MarketService {
     )
         
   }
+  // 
 
   logoutinService(){
     // need return with promises

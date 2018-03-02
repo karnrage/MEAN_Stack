@@ -42,6 +42,8 @@ export class RegisterComponent implements OnInit {
   console.log("where?: inside register.component: register fxn: this._marketService.regUser(this.user)")
 
            if (response.loginAgain){
+             console.log(response.errors)
+             this.ErrMessage = response.errors
              return this._router.navigateByUrl('/')
            }
            else{

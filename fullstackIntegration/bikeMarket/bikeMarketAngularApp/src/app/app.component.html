@@ -5,18 +5,19 @@
   </h1>
   <img width="300" alt="Angular Logo" src="https://upload.wikimedia.org/wikipedia/en/thumb/2/20/Trek_Bicycle_Corporation_logo.svg/1280px-Trek_Bicycle_Corporation_logo.svg.png">
 </div>
-<ul>
+<!-- <ul>
   <li>
-    <h2>
+    <h5> -->
       <!-- create *ngIf with new variable below tu turn off elements when logged in -->
       <!-- {{ | json }} -->
       <!-- <app-register (myLoginEvent)="dataFromLogin2($event)" *ngIf='logged == false' style="float: left; width: 600px"></app-register> -->
       <!-- <app-login2 (myLoginEvent)="dataFromLogin2($event)" *ngIf='logged == false' style="float: right; width: 600px"></app-login2> -->
-      <app-login2  *ngIf='logged == false' style="float: right; width: 800px"></app-login2>
-      <app-register  *ngIf='logged == false' style="float: left; width: 800px"></app-register>
-
-    </h2>
+      <div class="row">
+        <app-login2  *ngIf='logged == false' class="col-md"></app-login2>
+        <app-register  *ngIf='logged == false' class="col-md"></app-register>
+      </div>
+    <!-- </h5>
   </li>
-</ul>
+</ul> -->
 
 <router-outlet></router-outlet>
