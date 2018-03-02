@@ -44,7 +44,22 @@ allBikes(){
   return  this._marketService.showBike().then(response => this.showBike = response)
 }
 
-erase(item){
+erase(itemData){
+  console.log("where?:inside bike-items component: erase fxn")
+  console.log(itemData)
+  this._marketService.erase(itemData)
+  .then(response =>{ 
+    console.log("where?:inside bike-edit comp: erase fxn: after 1st reponse")
+    if(response.error){
+      console.log("error; received an error from mongoose")
+      return this._router.navigateByUrl('/browse')
+    }
+    else{
+      console.log("=============RESPONSE=========:", response)
+      this._marketService.showBike().then(response => this.showBike = response)
+      this._router.navigateByUrl('listings')
+    }
+  })    
   
 }
 

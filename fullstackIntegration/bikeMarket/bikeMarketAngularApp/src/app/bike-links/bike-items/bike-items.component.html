@@ -21,8 +21,8 @@
             <td>location:{{item.location}}</td>
             <td>createdBy:{{item._user._id}}|||{{user.sessionUser._id}}</td>
             
-            <button *ngIf='item._user._id === user._id' type="button" class="btn btn-danger"(click)="erase(item)">Erase</button>
-            <button *ngIf='item._user._id != user._id' type="button" class="btn btn-primary"(click)="contact(item)">Contact</button>
+            <button *ngIf='item._user._id === user.sessionUser._id' type="button" class="btn btn-danger"(click)="erase(item)">Erase</button>
+            <button *ngIf='item._user._id != user.sessionUser._id' type="button" class="btn btn-primary"(click)="contact(item)">Contact</button>
             
           </tr>      
       </table>
