@@ -11,7 +11,7 @@
         </tr>
         <!-- <tr *ngFor="let item of showBike; let i = index; trackBy:trackByIndex"> -->
         <tr *ngFor="let item of showBike">
-                <form (submit)='editBike(item)' #editForm="ngForm">
+                <form (submit)='editBike(item);' #editForm="ngForm">
                   <!-- ; editForm.reset() removed this from above -->
           
           <td>
@@ -29,20 +29,29 @@
 
    
           <!-- Problem is that all text boxes update with new data, only want one -->
-          <td>Title:<input type='text' name='title' placeholder="{{item.title}}" [(ngModel)]='item.title' #title="ngModel"></td>
-          <td>Price:<input type='text' name='price' placeholder="{{item.price}}" [(ngModel)]='item.price' #price="ngModel"></td>
-          <td>Desc:<input type='text' name='desc' placeholder="{{item.desc}}" [(ngModel)]='item.desc' #desc="ngModel"></td>
-          <td>location:<input type='text' name='location' placeholder="{{item.location}}" [(ngModel)]='item.location' #location="ngModel"></td>
+          <td>Title:<input required type='text' name='title' placeholder="{{item.title}}" [(ngModel)]='item.title' #title="ngModel">
+            <p *ngIf="!title.valid && (title.dirty || title.touched)">Title isn't acceptable.</p>
+          </td>
+          <td>Price:<input required type='text' name='price' placeholder="{{item.price}}" [(ngModel)]='item.price' #price="ngModel">
+            <p *ngIf="!price.valid && (price.dirty || price.touched)">Price must be listed.</p>
+          </td>
+          <td>Desc:<input required type='text' name='desc' maxlength="20" placeholder="{{item.desc}}" [(ngModel)]='item.desc' #desc="ngModel">
+            <p *ngIf="!desc.valid && (desc.dirty || desc.touched)">Description is required.</p>
+            <p *ngIf="desc.maxlength && (desc.dirty || price.touched)">Max of 20 characters length.</p>
+          </td>
+          <td>location:<input required type='text' name='location' placeholder="{{item.location}}" [(ngModel)]='item.location' #location="ngModel">
+            <p *ngIf="!location.valid && (location.dirty || location.touched)">Where is the bike being sold?</p>
+          </td>
         
-           <p>Edit works without hidden input......why?<p>
           <p><input class="btn btn-primary" (submit)='editBike($event)' type="submit" value='Update' ></p>
           <!-- IMPORTANT: *possible* solution is to use ($event) to pass in data on which bike! p= -->
           <!-- IMPORTANT: do not do (click)='editbike($event)....when in form it is submit only. Changed and now double submission stopped!-->
           <button type="button" class="btn btn-danger"(click)="eraseBike(item)">Erase</button>
           <!-- <button type="button" class="btn btn-danger"(click)="eraseBike(item)">Erase</button> -->
         </form>
-        </tr>      
+      </tr>      
     </table>
+                           <p>Edit works without hidden input......why?<p>
   </div>
 </div>
 
