@@ -10,8 +10,8 @@ var app = express();
 
 app.use(session({secret: 'keep it secret keep it safe'}));
 app.use(bodyParser.json()); 
-app.set('view engine', 'html');
-app.use(express.static(path.join(__dirname, './AngularApp/dist/')));
+// app.set('view engine', 'html');
+app.use(express.static(path.join(__dirname, './templateAngApp/dist/')));
 
 app.use(cookieParser()); 
   

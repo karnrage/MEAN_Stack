@@ -10,4 +10,7 @@ import { Router } from '@angular/router'
 })
 export class AppComponent {
   title = 'app';
+
+  constructor(private _apiService: ApiService, private _router: Router) { }
+  
 }

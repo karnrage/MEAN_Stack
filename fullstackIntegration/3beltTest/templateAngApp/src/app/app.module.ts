@@ -6,11 +6,19 @@ import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 import { ApiService } from './api.service';
 import { AppComponent } from './app.component';
+import { LandingComponent } from './landing/landing.component';
+import { BrowseComponent } from './browse/browse.component';
+import { CreateComponent } from './browse/create/create.component';
+import { UserpageComponent } from './browse/userpage/userpage.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LandingComponent,
+    BrowseComponent,
+    CreateComponent,
+    UserpageComponent
   ],
   imports: [
     BrowserModule,
